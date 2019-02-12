@@ -18,23 +18,20 @@ int main()
 
 	cin >> n >> a >> b >> x >> y;
 
-	if (n > 0 && a > 0 && b > 0 && x > 0 && y > 0 && x <=100 && y <= 100)
+
+	if (n > 0 && a > 0 && b > 0 && x > 0 && y > 0 && x <= 100 && y <= 100)
 	{
-		if (a < b)
+		if (a < b && x < y)
 		{
 			if (n < a)
 				cout << n << endl;
 			else
-				if (n > a && n < b)
+				if (n >= a && n < b)
 					cout << n * (100 - x) / 100 << endl;
 				else
-					if (n > b)
+					if (n >= b)
 						cout << n * (100 - y) / 100 << endl;
 		}
-		else
-			cout << "error" << endl;
 	}
-	else
-		cout << "error" << endl;
 }
 
