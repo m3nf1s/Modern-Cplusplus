@@ -25,8 +25,6 @@ int main()
 				cout << i << " ";
 		}
 	}
-	else
-		cout << "error" << endl;
 }
 
 
