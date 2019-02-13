@@ -26,7 +26,7 @@ bool IsPalindrom(string word)
 	return true;
 }
 
-vector<string> PalindromFilter (vector<string> words, int minLength)
+vector<string> PalindromFilter (vector<string> words, size_t minLength)
 {
 	vector<string> newVector;
 	for(auto w : words)
