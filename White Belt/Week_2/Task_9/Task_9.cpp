@@ -4,7 +4,7 @@
 #include <vector>
 #include <cmath>
 
-
+using namespace std;
 
 /*
  * Люди стоят в очереди, но никогда не уходят из её начала, зато могут приходить в конец и уходить оттуда.
@@ -28,8 +28,6 @@
  * Для каждой операции WORRY_COUNT выведите одно целое число — количество беспокоящихся людей в очереди.
  */
 
-using namespace std;
-
 int main()
 {
 	int comands_count;
@@ -38,10 +36,10 @@ int main()
 	vector<bool> queue;
 	for (int i = 0; i < comands_count; i++)
 	{
-		string comand;
-		cin >> comand;
+		string command;
+		cin >> command;
 
-		if (comand == "COME")
+		if (command == "COME")
 		{
 			int length;
 			cin >> length;
@@ -55,21 +53,21 @@ int main()
 			}
 		}
 
-		if (comand == "WORRY")
+		if (command == "WORRY")
 		{
 			int index;
 			cin >> index;
 			queue[index] = true;
 		}
 
-		if (comand == "QUIET")
+		if (command == "QUIET")
 		{
 			int index;
 			cin >> index;
 			queue[index] = false;
 		}
 
-		if (comand == "WORRY_COUNT")
+		if (command == "WORRY_COUNT")
 		{
 			int worryCount = 0;
 			for (bool f : queue)
