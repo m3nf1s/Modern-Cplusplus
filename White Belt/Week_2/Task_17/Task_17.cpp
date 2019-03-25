@@ -27,5 +27,57 @@
 
 int main()
 {
-    
+	std::map <std::string, std::set<std::string>> list_synonyms;
+
+	int command_count;
+	std::cin >> command_count;
+
+	for (int i = 0; i < command_count; ++i)
+	{
+		std::string command;
+		std::cin >> command;
+
+		if (command == "ADD")
+		{
+			std::string first_word, second_word;
+			std::cin >> first_word >> second_word;
+
+			list_synonyms[first_word].insert(second_word);
+			list_synonyms[second_word].insert(first_word);
+
+			continue;
+		}
+
+		if(command == "COUNT")
+		{
+			std::string word;
+			std::cin >> word;
+
+			if (list_synonyms.count(word) == 1)
+				std::cout << list_synonyms[word].size() << std::endl;
+			else
+				std::cout << "0" << std::endl;
+
+			continue;
+		}
+
+		if(command == "CHECK")
+		{
+			std::string first_word, second_word;
+			std::cin >> first_word >> second_word;
+
+			if(list_synonyms.count(first_word) == 1)
+			{
+				if (list_synonyms[first_word].count(second_word) == 1)
+					std::cout << "YES" << std::endl;
+				else
+					std::cout << "NO" << std::endl;
+			}
+			else
+			{
+				std::cout << "NO" << std::endl;
+			}
+		}
+
+	}
 }
