@@ -19,11 +19,6 @@
 #include <vector>
 #include <algorithm>
 
-bool Comp(int& number_one, int& number_two)
-{
-	return abs(number_one) < abs(number_two);
-}
-
 void PrintVector(const std::vector<int>& vec)
 {
 	for (const int& item : vec)
@@ -35,9 +30,9 @@ void PrintVector(const std::vector<int>& vec)
 
 int main()
 {
-	int length;
+	size_t length;
 	std::cin >> length;
-
+	
 	std::vector<int> mass(length);
 
 	for (size_t i = 0; i < length; i++)
@@ -47,7 +42,10 @@ int main()
 		mass[i] = number;
 	}
 
-	std::sort(std::begin(mass), std::end(mass), Comp);
+	std::sort(std::begin(mass), std::end(mass), [](int& x, int& y)
+	{
+		return abs(x) < abs(y);
+	});
 
 	PrintVector(mass);
 
