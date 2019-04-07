@@ -32,7 +32,6 @@ int main()
 {
 	size_t length;
 	std::cin >> length;
-	
 	std::vector<int> mass(length);
 
 	for (size_t i = 0; i < length; i++)
