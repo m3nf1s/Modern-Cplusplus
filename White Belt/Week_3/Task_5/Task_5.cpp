@@ -17,95 +17,95 @@
 
 class Person
 {
-//public:
-//	void ChangeFirstName(int year, const std::string& firts_name)
-//	{
-//		list_first_name[year] = firts_name;
-//	}
-//	void ChangeLastName(int year, const std::string& last_name)
-//	{
-//		list_last_name[year] = last_name;
-//	}
-//	std::string GetFullName(int year)
-//	{
-//		int year_list_fn = FindMaxYear(year, list_first_name);
-//		int year_list_ln = FindMaxYear(year, list_last_name);
-//
-//
-//		if (list_first_name.count(year_list_fn) == 1 && list_last_name.count(year_list_ln) == 1)
-//		{
-//			return list_first_name[year_list_fn] + " " + list_last_name[year_list_ln];
-//		}
-//		
-//		if (list_first_name.count(year_list_fn) == 1 && list_last_name.count(year_list_ln) != 1)
-//		{
-//			return list_first_name[year_list_fn] + " with with unknown last name";
-//		}
-//		
-//		if (list_first_name.count(year_list_fn) != 1 && list_last_name.count(year_list_ln) == 1)
-//		{
-//			return list_last_name[year_list_ln] + " with unknown first name";
-//		}
-//
-//		return "Incognito";
-//	}
-//	std::string GetFullNameWithHistory(int year)
-//	{
-//		if (list_first_name.size() < 2 && list_last_name.size() < 2)
-//		{
-//			return GetFullName(year);
-//		}
-//		else
-//		{
-//
-//			int year_list_fn = FindMaxYear(year, list_first_name);
-//			int year_list_ln = FindMaxYear(year, list_last_name);
-//
-//			std::vector<std::string> history_fist_name;
-//			std::vector<std::string> history_last_name;
-//
-//			VectorPush(year_list_fn, list_first_name, history_fist_name);
-//			VectorPush(year_list_ln, list_last_name, history_last_name);
-//
-//			std::string message1 = "";
-//			std::string message2 = "";
-//
-//			for (const std::string& s : history_fist_name)
-//			{
-//				message1 += s + ",";
-//			}
-//
-//			for (const std::string& s : history_last_name)
-//			{
-//				message2 += s + ",";
-//			}
-//
-//			return list_first_name[year_list_fn] + " (" + message1 + ") " + list_last_name[year_list_ln] + " (" + message2 + ")";
-//		}
-//	}
-//private:
-//	std::map<int, std::string> list_first_name;
-//	std::map<int, std::string> list_last_name;
-//
-//	int FindMaxYear(const int year, const std::map<int, std::string>& list)
-//	{
-//		int max = INT32_MIN;
-//		for (const auto& item : list)
-//		{
-//			if (item.first <= year)
-//				max = item.first;
-//		}
-//		return max;
-//	}
-//
-//	void VectorPush(int max, std::map<int,std::string> list, std::vector<std::string>& vec)
-//	{
-//		for (const auto& pair : list)
-//		{
-//			if (pair.first < max)
-//				vec.push_back(pair.second);
-//		}
-//	}
+public:
+	void ChangeFirstName(int year, const std::string& firts_name)
+	{
+		list_first_name[year] = firts_name;
+	}
+	void ChangeLastName(int year, const std::string& last_name)
+	{
+		list_last_name[year] = last_name;
+	}
+	std::string GetFullName(int year)
+	{
+		int year_list_fn = FindMaxYear(year, list_first_name);
+		int year_list_ln = FindMaxYear(year, list_last_name);
+
+
+		if (list_first_name.count(year_list_fn) == 1 && list_last_name.count(year_list_ln) == 1)
+		{
+			return list_first_name[year_list_fn] + " " + list_last_name[year_list_ln];
+		}
+		
+		if (list_first_name.count(year_list_fn) == 1 && list_last_name.count(year_list_ln) != 1)
+		{
+			return list_first_name[year_list_fn] + " with with unknown last name";
+		}
+		
+		if (list_first_name.count(year_list_fn) != 1 && list_last_name.count(year_list_ln) == 1)
+		{
+			return list_last_name[year_list_ln] + " with unknown first name";
+		}
+
+		return "Incognito";
+	}
+	std::string GetFullNameWithHistory(int year)
+	{
+		if (list_first_name.size() < 2 && list_last_name.size() < 2)
+		{
+			return GetFullName(year);
+		}
+		else
+		{
+
+			int year_list_fn = FindMaxYear(year, list_first_name);
+			int year_list_ln = FindMaxYear(year, list_last_name);
+
+			std::vector<std::string> history_fist_name;
+			std::vector<std::string> history_last_name;
+
+			VectorPush(year_list_fn, list_first_name, history_fist_name);
+			VectorPush(year_list_ln, list_last_name, history_last_name);
+
+			std::string message1 = "";
+			std::string message2 = "";
+
+			for (const std::string& s : history_fist_name)
+			{
+				message1 += s + ",";
+			}
+
+			for (const std::string& s : history_last_name)
+			{
+				message2 += s + ",";
+			}
+
+			return list_first_name[year_list_fn] + " (" + message1 + ") " + list_last_name[year_list_ln] + " (" + message2 + ")";
+		}
+	}
+private:
+	std::map<int, std::string> list_first_name;
+	std::map<int, std::string> list_last_name;
+
+	int FindMaxYear(const int year, const std::map<int, std::string>& list)
+	{
+		int max = INT32_MIN;
+		for (const auto& item : list)
+		{
+			if (item.first <= year)
+				max = item.first;
+		}
+		return max;
+	}
+
+	void VectorPush(int max, std::map<int,std::string> list, std::vector<std::string>& vec)
+	{
+		for (const auto& pair : list)
+		{
+			if (pair.first < max)
+				vec.push_back(pair.second);
+		}
+	}
 };
 
 int main()
