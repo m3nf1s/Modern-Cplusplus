@@ -6,7 +6,6 @@
 
 struct Specialization
 {
-public:
 	explicit Specialization(std::string new_value)
 	{
 		value = new_value;
@@ -16,8 +15,7 @@ public:
 
 struct Course
 {
-public:
-	Course(std::string new_value)
+	explicit Course(std::string new_value)
 	{
 		value = new_value;
 	}
@@ -26,8 +24,7 @@ public:
 
 struct Week
 {
-public:
-	Week(std::string new_value)
+	explicit Week(std::string new_value)
 	{
 		value = new_value;
 	}
@@ -36,8 +33,7 @@ public:
 
 struct LectureTitle
 {
-public:
-	LectureTitle(Specialization spec_name, Course course_name, Week week_name)
+	explicit LectureTitle(Specialization spec_name, Course course_name, Week week_name)
 	{
 		specialization = spec_name.value;
 		course = course_name.value;
