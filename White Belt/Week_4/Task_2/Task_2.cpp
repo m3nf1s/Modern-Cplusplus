@@ -1,6 +1,7 @@
 ﻿// Task_2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
+#include "pch.h"
 #include <iostream>
 #include <vector>
 
@@ -126,6 +127,5 @@ int main()
 	Image image = { 10,2,6 };
 	Params params = { 4,2,6 };
 
-	std::cout << ComputeImageWeight(params, image) << std::endl;    
+	std::cout << ComputeImageWeight(params, image) << std::endl;
 }
-
