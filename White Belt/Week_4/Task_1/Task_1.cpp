@@ -1,6 +1,7 @@
 ﻿// Task_1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
+#include "pch.h"
 #include <iostream>
 #include <string>
 
@@ -41,7 +42,7 @@ struct LectureTitle
 	}
 	std::string specialization;
 	std::string course;
-	std::string week;	
+	std::string week;
 };
 int main()
 {
