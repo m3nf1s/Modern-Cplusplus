@@ -41,7 +41,7 @@ LectureTitle title(
 
 struct Specialization
 {
-	explicit Specialization(std::string new_value)
+	explicit Specialization(const std::string& new_value)
 	{
 		value = new_value;
 	}
@@ -50,7 +50,7 @@ struct Specialization
 
 struct Course
 {
-	explicit Course(std::string new_value)
+	explicit Course(const std::string& new_value)
 	{
 		value = new_value;
 	}
@@ -59,7 +59,7 @@ struct Course
 
 struct Week
 {
-	explicit Week(std::string new_value)
+	explicit Week(const std::string& new_value)
 	{
 		value = new_value;
 	}
@@ -68,7 +68,7 @@ struct Week
 
 struct LectureTitle
 {
-	explicit LectureTitle(Specialization spec_name, Course course_name, Week week_name)
+	explicit LectureTitle(const Specialization& spec_name, const Course& course_name, const Week& week_name)
 	{
 		specialization = spec_name.value;
 		course = course_name.value;
