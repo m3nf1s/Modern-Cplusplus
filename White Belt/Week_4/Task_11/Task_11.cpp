@@ -44,17 +44,17 @@ public:
 		}
 		else
 		{
-			int NOD = FindGCD(numerator, denominator);
+			int GCD = FindGCD(numerator, denominator);
 
 			if ((numerator > 0 && denominator < 0) || (numerator < 0 && denominator < 0))
 			{
-				_numerator = -numerator / NOD;
-				_denominator = -denominator / NOD;
+				_numerator = -numerator / GCD;
+				_denominator = -denominator / GCD;
 			}
 			else
 			{
-				_numerator = numerator / NOD;
-				_denominator = denominator / NOD;
+				_numerator = numerator / GCD;
+				_denominator = denominator / GCD;
 			}
 		}
 	}
