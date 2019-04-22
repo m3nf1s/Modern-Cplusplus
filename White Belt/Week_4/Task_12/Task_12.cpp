@@ -44,17 +44,17 @@ public:
 		}
 		else
 		{
-			int NOD = FindGCD(numerator, denominator);
+			int GCD = FindGCD(numerator, denominator);
 
 			if ((numerator > 0 && denominator < 0) || (numerator < 0 && denominator < 0))
 			{
-				_numerator = -numerator / NOD;
-				_denominator = -denominator / NOD;
+				_numerator = -numerator / GCD;
+				_denominator = -denominator / GCD;
 			}
 			else
 			{
-				_numerator = numerator / NOD;
-				_denominator = denominator / NOD;
+				_numerator = numerator / GCD;
+				_denominator = denominator / GCD;
 			}
 		}
 	}
@@ -132,7 +132,7 @@ Rational operator/ (const Rational& one, const Rational& two)
 
 istream& operator>>(istream& stream, Rational& obj)
 {
-	if (stream)
+	if (stream.good())
 	{
 		int numerator = 0;
 		int denominator = 0;
@@ -175,7 +175,7 @@ int main() {
 	}
 
 	{
-		istringstream input("5/7 10/8");
+		istringstream input("5/7 5/4");
 		Rational r1, r2;
 		input >> r1 >> r2;
 		bool correct = r1 == Rational(5, 7) && r2 == Rational(5, 4);
