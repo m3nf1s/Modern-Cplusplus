@@ -17,31 +17,35 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
-#include <sstream>
+#include <exception>
+#include <cmath>
 
 class Rational
 {
 public:
+	Rational()
+	{
+		_numerator = 0;
+		_denominator = 1;
+	}
 	Rational(const int numerator, const int denominator)
 	{
 		if (denominator == 0)
 		{
 			throw std::invalid_argument("Invalid argument");
 		}
+
+		const int GCD = FindGCD(numerator, denominator);
+
+		if (numerator > 0 && denominator < 0 || numerator < 0 && denominator < 0)
+		{
+			_numerator = -numerator / GCD;
+			_denominator = -denominator / GCD;
+		}
 		else
 		{
-			int GCD = FindGCD(numerator, denominator);
-
-			if (numerator > 0 && denominator < 0 || numerator < 0 && denominator < 0)
-			{
-				_numerator = -numerator / GCD;
-				_denominator = -denominator / GCD;
-			}
-			else
-			{
-				_numerator = numerator / GCD;
-				_denominator = denominator / GCD;
-			}
+			_numerator = numerator / GCD;
+			_denominator = denominator / GCD;
 		}
 	}
 
@@ -59,7 +63,7 @@ private:
 	int _numerator;
 	int _denominator;
 
-	int FindGCD(int numerator, int denominator)
+	int FindGCD(int numerator, int denominator) const
 	{
 		numerator = abs(numerator);
 		denominator = abs(denominator);
@@ -80,50 +84,47 @@ private:
 	}
 };
 
-Rational operator + (const Rational& one, const Rational& two)
+Rational operator+ (const Rational& lhs, const Rational& rhs)
 {
-	if (one.GetDenominator() == two.GetDenominator())
-	{
-		return Rational(one.GetNumerator() + two.GetNumerator(), one.GetDenominator());
-	}
+	if (lhs.GetDenominator() == rhs.GetDenominator())
+		return { lhs.GetNumerator() + rhs.GetNumerator(), lhs.GetDenominator() };
 
-	return Rational(one.GetNumerator() * two.GetDenominator() + two.GetNumerator() * one.GetDenominator(), one.GetDenominator() * two.GetDenominator());
+	return { lhs.GetNumerator() * rhs.GetDenominator() + rhs.GetNumerator() * lhs.GetDenominator(), lhs.GetDenominator() *rhs.GetDenominator() };
 }
 
-Rational operator - (const Rational& one, const Rational& two)
+Rational operator- (const Rational& lhs, const Rational& rhs)
 {
-	if (one.GetDenominator() == two.GetDenominator())
-	{
-		return Rational(one.GetNumerator() - two.GetNumerator(), one.GetDenominator());
-	}
+	if (lhs.GetDenominator() == rhs.GetDenominator())
+		return { lhs.GetNumerator() - rhs.GetNumerator(), lhs.GetDenominator() };
 
-	return Rational(one.GetNumerator() * two.GetDenominator() - two.GetNumerator() * one.GetDenominator(), one.GetDenominator() * two.GetDenominator());
+	return { lhs.GetNumerator() * rhs.GetDenominator() - rhs.GetNumerator() * lhs.GetDenominator(), lhs.GetDenominator() * rhs.GetDenominator() };
 }
 
-Rational operator * (const Rational& one, const Rational& two)
+Rational operator* (const Rational& lhs, const Rational& rhs)
 {
-	return Rational(one.GetNumerator() * two.GetNumerator(), one.GetDenominator() * two.GetDenominator());
+	return { lhs.GetNumerator() * rhs.GetNumerator(), lhs.GetDenominator() * rhs.GetDenominator() };
 }
 
-Rational operator / (const Rational& lhs, const Rational& rhs)
+Rational operator/ (const Rational& lhs, const Rational& rhs)
 {
-	int new_numerator = lhs.GetNumerator() * rhs.GetDenominator();
-	int new_denominator = rhs.GetNumerator() * lhs.GetDenominator();
+	const int numerator = lhs.GetNumerator() * rhs.GetDenominator();
+	const int denominator = rhs.GetNumerator() * lhs.GetDenominator();
 
-	if (new_denominator == 0)
-		throw std::domain_error("domain_error");
+	if (denominator == 0)
+		throw std::domain_error("Division by zero");
 
-
-	return Rational(new_numerator, new_denominator);
+	return { numerator, denominator };
 }
 
-std::istream& operator >>(std::istream& stream, Rational& obj)
+std::istream& operator>> (std::istream& stream, Rational& obj)
 {
-	if (stream)
+	if(stream.good())
 	{
 		int numerator = 0;
 		int denominator = 0;
 		stream >> numerator;
+		if (stream.peek() != '/')
+			throw std::invalid_argument("/");
 		stream.ignore(1);
 		stream >> denominator;
 
@@ -133,41 +134,45 @@ std::istream& operator >>(std::istream& stream, Rational& obj)
 	return stream;
 }
 
-std::ostream& operator <<(std::ostream& stream, const Rational& obj)
+std::ostream& operator<< (std::ostream& stream, Rational& obj)
 {
-	stream << obj.GetNumerator() << '/' << obj.GetDenominator();
+	stream << obj.GetNumerator() << "/" << obj.GetDenominator();
 
 	return stream;
 }
 
 int main()
 {
+	try
 	{
-		Rational r1(1, 2), r2(1, 3);
-		std::cout << r1 + r2 << std::endl;
-	}
+		Rational r1, r2;
+		char oper;
 
-	{
-		try
+		std::cin >> r1 >> oper >> r2;
+
+		if(oper == '+')
 		{
-			Rational r1(1, 2), r2(5, 0);
-			std::cout << r1 + r2 << std::endl;
+			Rational result = r1 + r2;
+			std::cout << result << std::endl;
 		}
-		catch (const std::invalid_argument& ex)
+		else if(oper == '-')
 		{
-			ex.what();
+			Rational result = r1 - r2;
+			std::cout << result << std::endl;
+		}
+		else if(oper == '*')
+		{
+			Rational result = r1 * r2;
+			std::cout << result << std::endl;
+		}
+		else if(oper=='/')
+		{
+			Rational result = r1 / r2;
+			std::cout << result << std::endl;
 		}
 	}
-
+	catch (std::exception& ex)
 	{
-		try
-		{
-			Rational r1(4, 5), r2(0, 8);
-			std::cout << r1 / r2 << std::endl;
-		}
-		catch (const std::domain_error& ex)
-		{
-			ex.what();
-		}
+		std::cout << ex.what() << std::endl;
 	}
 }
