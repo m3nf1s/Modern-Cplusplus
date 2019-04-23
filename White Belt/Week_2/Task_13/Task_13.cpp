@@ -90,14 +90,8 @@ int main()
 
 			std::cin >> stop;
 
-			for (const auto& item : list_bus_stops)
-			{
-				for (const auto& value : item.second)
-				{
-					if (value == stop)
-						buses.push_back(item.first);
-				}
-			}
+			if (list_stop_buses.count(stop))
+				buses = list_stop_buses[stop];
 
 			if(!buses.empty())
 			{
