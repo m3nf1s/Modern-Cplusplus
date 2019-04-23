@@ -1,15 +1,13 @@
-﻿// Task_8.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿/*
+ * В stdin даны два натуральных числа.
+ * Выведите в stdout их наибольший общий делитель.
+ */
 
 #include "pch.h"
 #include <iostream>
 
 using namespace std;
 
-/*
- * В stdin даны два натуральных числа.
- * Выведите в stdout их наибольший общий делитель.
- */
 int main()
 {
 	int number1, number2;
@@ -26,4 +24,3 @@ int main()
 
 	cout << number1 + number2;
 }
-
