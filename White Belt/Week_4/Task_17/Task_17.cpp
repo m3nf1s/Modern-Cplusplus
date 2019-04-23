@@ -44,6 +44,18 @@ public:
 			поля LastFetchedTime
 			* если AskTimeServer() бросила другое исключение, пробросьте его дальше.
 		*/
+
+		try
+		{
+			string time = AskTimeServer();
+			LastFetchedTime = time;
+		}
+		catch (const system_error&)
+		{
+			return LastFetchedTime;
+		}
+
+		return LastFetchedTime;
 	}
 
 private:
