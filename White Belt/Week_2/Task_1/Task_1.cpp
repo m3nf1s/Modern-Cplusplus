@@ -1,10 +1,4 @@
-﻿// Task_1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include "pch.h"
-#include <iostream>
-
-/*
+﻿/*
  * Напишите функцию, которая
  * называется Factorial
  * возвращает int
@@ -12,17 +6,15 @@
  * Гарантируется, что аргумент функции по модулю не превышает 10. Для отрицательных аргументов функция должна возвращать 1.
  */
 
-/// <summary>
-/// Нахождение факторила числа
-/// </summary>
-/// <param name="number">Факториал числа</param>
-/// <returns>Факториал</returns>
+#include "pch.h"
+#include <iostream>
+
 int Factorial (int number)
 {
 	int fac = 1;
 	if (number > 1)
 	{
-		for (int i = 1; i <= number; i++)
+		for (int i = 2; i <= number; i++)
 			fac *= i;
 
 		return fac;
@@ -38,4 +30,3 @@ int main()
 
 	return 0;
 }
-
