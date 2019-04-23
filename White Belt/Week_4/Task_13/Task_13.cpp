@@ -83,7 +83,7 @@ private:
 		_denominator = 1;
 	}
 
-	int FindGCD(int numerator, int denominator)
+	int FindGCD(int numerator, int denominator) const
 	{
 		numerator = abs(numerator);
 		denominator = abs(denominator);
@@ -136,16 +136,11 @@ Rational operator/ (const Rational& one, const Rational& two)
 
 istream& operator>>(istream& stream, Rational& obj)
 {
-	if (stream)
-	{
-		int numerator = 0;
-		int denominator = 0;
-		stream >> numerator;
-		stream.ignore(1);
-		stream >> denominator;
+	int numerator = 0;
+	int denominator = 0;
 
+	if (stream >> numerator && stream.ignore(1) && stream >> denominator)
 		obj = { numerator, denominator };
-	}
 
 	return stream;
 }
@@ -159,7 +154,7 @@ ostream& operator<<(ostream& stream, const Rational& obj)
 
 bool operator< (const Rational& obj_one, const Rational& obj_two)
 {
-	return ((double)obj_one.Numerator() / obj_one.Denominator()) < ((double)obj_two.Numerator() / obj_two.Denominator());
+	return (static_cast<double>(obj_one.Numerator()) / obj_one.Denominator()) < (static_cast<double>(obj_two.Numerator()) / obj_two.Denominator());
 }
 
 int main() {
