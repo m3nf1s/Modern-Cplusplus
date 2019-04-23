@@ -132,17 +132,11 @@ Rational operator/ (const Rational& one, const Rational& two)
 
 istream& operator>>(istream& stream, Rational& obj)
 {
-	if (stream.good())
-	{
-		int numerator = 0;
-		int denominator = 0;
-		stream >> numerator;
-		stream.ignore(1);
-		stream >> denominator;
+	int numerator = 0;
+	int denominator = 0;
 
+	if(stream >> numerator && stream.ignore(1) && stream >> denominator)
 		obj = { numerator, denominator };
-	}
-
 	return stream;
 }
 
