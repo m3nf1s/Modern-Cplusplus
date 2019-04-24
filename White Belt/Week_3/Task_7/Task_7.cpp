@@ -21,165 +21,176 @@
 class Person
 {
 public:
-	Person(const std::string& first_name, const std::string& last_name, const int year)
+	Person(const std::string& first_name, const std::string& last_name, const int new_year)
 	{
-		birth_year = year;
-		list_fn[year] = first_name;
-		list_ln[year] = last_name;
+		birth_year = new_year;
+		list_first_name[new_year] = first_name;
+		list_last_name[new_year] = last_name;
 	}
-	/// <summary>
-	/// Изменение имени
-	/// </summary>
-	/// <param name="year">Год изменения</param>
-	/// <param name="first_name">Имя</param>
-	void ChangeFirstName(int year, const std::string& first_name)
+
+	void ChangeFirstName(int year, const std::string& firts_name)
 	{
-		if (year > birth_year)
-			list_fn[year] = first_name;
+		if(year >= birth_year)
+			list_first_name[year] = firts_name;
 	}
-	/// <summary>
-	/// Изменение фамилии
-	/// </summary>
-	/// <param name="year">Год изменения</param>
-	/// <param name="last_name">Фамилия</param>
+
 	void ChangeLastName(int year, const std::string& last_name)
 	{
-		if (year > birth_year)
-			list_ln[year] = last_name;
+		if (year >= birth_year)
+			list_last_name[year] = last_name;
 	}
-	/// <summary>
-	/// Получение имени и фамилии на определенный год
-	/// </summary>
-	/// <param name="year">Год</param>
-	/// <returns>Имя и фамилия на указанный год</returns>
-	std::string GetFullName(int year)
-	{
-		int actual_year_fn = FindActualYear(year, list_fn);
-		int actual_year_ln = FindActualYear(year, list_ln);
 
+	std::string GetFullName(int year) const 
+	{
 		if (year >= birth_year)
 		{
-			if (list_fn.count(actual_year_fn) == 0 && list_ln.count(actual_year_ln) == 0)
+			int year_list_fn = FindMaxYear(year, list_first_name);
+			int year_list_ln = FindMaxYear(year, list_last_name);
+
+
+			if (list_first_name.count(year_list_fn) == 1 && list_last_name.count(year_list_ln) == 1)
 			{
-				return "Incognito";
+				return list_first_name.at(year_list_fn) + " " + list_last_name.at(year_list_ln);
 			}
 
-			if (list_fn.count(actual_year_fn) == 1 && list_ln.count(actual_year_ln) == 0)
+			if (list_first_name.count(year_list_fn) == 1 && list_last_name.count(year_list_ln) != 1)
 			{
-				return list_fn[actual_year_fn] + " with unknow last name";
+				return list_first_name.at(year_list_fn) + " with unknown last name";
 			}
 
-			if (list_fn.count(actual_year_fn) == 0 && list_ln.count(actual_year_ln) == 1)
+			if (list_first_name.count(year_list_fn) != 1 && list_last_name.count(year_list_ln) == 1)
 			{
-				return list_ln[actual_year_ln] + "with unknow first name";
-			}
-
-			if (list_fn.count(actual_year_fn) == 1 && list_ln.count(actual_year_ln) == 1)
-			{
-				return list_fn[actual_year_fn] + " " + list_ln[actual_year_ln];
+				return list_last_name.at(year_list_ln) + " with unknown first name";
 			}
 		}
 
 		return "No person";
 	}
-	/// <summary>
-	/// Получения имени и фамилии с историей изменения на определенный год
-	/// </summary>
-	/// <param name="year">Год</param>
-	/// <returns>Имя и фамилия с историей</returns>
-	std::string GetFullNameWithHistory(int year)
+
+	std::string GetFullNameWithHistory(int year) const
 	{
-		int actual_year_fn = FindActualYear(year, list_fn);
-		int actual_year_ln = FindActualYear(year, list_ln);
-
-		std::string history_fn = GetHistory(actual_year_fn, list_fn);
-		std::string history_ln = GetHistory(actual_year_ln, list_ln);
-
-		if (history_fn.empty() && history_ln.empty())
+		if (year >= birth_year)
 		{
-			return GetFullName(year);
-		}
+			int max_year_fn = FindMaxYear(year, list_first_name);
+			int max_year_ln = FindMaxYear(year, list_last_name);
 
-		return list_fn[actual_year_fn] + " " + history_fn + " " + list_ln[actual_year_ln] + " " + history_ln;
-	}
-private:	
-	std::map<int, std::string> list_fn; //список год изменения - имя
-	std::map<int, std::string> list_ln; // список год изменения - фамилия
-	int birth_year; // год рождения
+			std::vector<std::string> history_fn = GetHistoryName(max_year_fn, list_first_name);
+			std::vector<std::string> history_ln = GetHistoryName(max_year_ln, list_last_name);
 
-	/// <summary>
-	/// Нахождения последнего года изменения имени/фамилии к искомому году
-	/// </summary>
-	/// <param name="year">Искомый год</param>
-	/// <param name="m">Список с именами/фамилиями</param>
-	/// <returns>Актуальный год</returns>
-	int FindActualYear(int year, std::map<int, std::string> m)
-	{
-		int y = INT32_MIN;
-		for (const auto& pair : m)
-		{
-			if (pair.first <= year)
+			if (list_first_name.count(max_year_fn) == 1 && list_last_name.count(max_year_ln) == 1)
 			{
-				y = pair.first;
+
+
+				if (history_fn.empty() && history_ln.empty())
+				{
+					return list_first_name.at(max_year_fn) + " " + list_last_name.at(max_year_ln);
+				}
+
+				if (!history_fn.empty() && history_ln.empty())
+				{
+					std::string str = GetHistory(history_fn);
+
+					return list_first_name.at(max_year_fn) + " (" + str + ") " + list_last_name.at(max_year_ln);
+				}
+
+				if (history_fn.empty() && !history_ln.empty())
+				{
+					std::string str = GetHistory(history_ln);
+
+					return list_first_name.at(max_year_fn) + " " + list_last_name.at(max_year_ln) + " (" + str + ")";
+				}
+
+				if (!history_fn.empty() && !history_ln.empty())
+				{
+					std::string str_fn = GetHistory(history_fn);
+					std::string str_ln = GetHistory(history_ln);
+
+					return list_first_name.at(max_year_fn) + " (" + str_fn + ") " + list_last_name.at(max_year_ln) + " (" + str_ln + ")";
+				}
+			}
+
+			if (list_first_name.count(max_year_fn) == 1 && list_last_name.count(max_year_ln) != 1)
+			{
+				if (!history_fn.empty())
+				{
+					std::string str = GetHistory(history_fn);
+
+					return list_first_name.at(max_year_fn) + " (" + str + ") " + "with unknown last name";
+				}
+				return list_first_name.at(max_year_fn) + " with unknown last name";
+			}
+
+			if (list_first_name.count(max_year_fn) != 1 && list_last_name.count(max_year_ln) == 1)
+			{
+				if (!history_ln.empty())
+				{
+					std::string str = GetHistory(history_ln);
+
+					return list_last_name.at(max_year_ln) + " (" + str + ") " + " with unknown first name";
+				}
+				return list_last_name.at(max_year_ln) + " with unknown first name";
 			}
 		}
 
-		return y;
+		return "No person";
+	}
+private:
+	std::map<int, std::string> list_first_name;
+	std::map<int, std::string> list_last_name;
+	int birth_year;
+
+	int FindMaxYear(const int year, const std::map<int, std::string>& list) const
+	{
+		int max = INT32_MIN;
+		for (const auto& item : list)
+		{
+			if (item.first <= year)
+				max = item.first;
+			else
+				break;
+		}
+		return max;
 	}
 
-	/// <summary>
-	/// Получение истории
-	/// </summary>
-	/// <param name="actual_year">До какого года будем искать</param>
-	/// <param name="m">Список, в котором будем вести поиск</param>
-	/// <returns>Строка с историей</returns>
-	std::string GetHistory(int actual_year, std::map<int, std::string>& m)
+	void ReverseVector(std::vector<std::string>& vec) const
 	{
-		std::string buff = "";
+		std::reverse(vec.begin(), vec.end());
+	}
+
+	std::vector<std::string> GetHistoryName(const int max, const std::map<int, std::string>& list) const
+	{
 		std::vector<std::string> vec;
-		for (const auto& pair : m)
+		std::string buff;
+		for (const auto& pair : list)
 		{
-			if (pair.second != buff && pair.first < actual_year)
+			if (pair.first < max && pair.second != buff)
 			{
 				vec.push_back(pair.second);
 				buff = pair.second;
 			}
-			else
-				break;
 		}
 
 		if (!vec.empty())
-			if (vec[vec.size() - 1] == m[actual_year])
+			if (vec[vec.size() - 1] == list.at(max))
 				vec.pop_back();
 
-		Reverse(vec);
+		ReverseVector(vec);
 
-		std::string result;
-
-		if (!vec.empty())
-		{
-			result = "(";
-
-			for (int i = 0; i < vec.size(); ++i)
-			{
-				if (i == 0)
-					result += vec[0];
-				else
-					result += ", " + vec[i];
-			}
-			result += ")";
-		}
-
-		return result;
+		return vec;
 	}
 
-	/// <summary>
-	/// Реверсировать вектор
-	/// </summary>
-	/// <param name="vec">Вектор, в котором будем менять порядок</param>
-	void Reverse(std::vector<std::string>& vec) const
+	std::string GetHistory(const std::vector<std::string>& vec) const
 	{
-		std::reverse(vec.begin(), vec.end());
+		std::string str;
+		for (int i = 0; i < vec.size(); ++i)
+		{
+			if (i == 0)
+				str += vec[i];
+			else
+				str += ", " + vec[i];
+		}
+
+		return str;
 	}
 };
 
