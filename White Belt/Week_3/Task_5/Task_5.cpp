@@ -40,7 +40,7 @@ public:
 		
 		if (list_first_name.count(year_list_fn) == 1 && list_last_name.count(year_list_ln) != 1)
 		{
-			return list_first_name[year_list_fn] + " with with unknown last name";
+			return list_first_name[year_list_fn] + " with unknown last name";
 		}
 		
 		if (list_first_name.count(year_list_fn) != 1 && list_last_name.count(year_list_ln) == 1)
