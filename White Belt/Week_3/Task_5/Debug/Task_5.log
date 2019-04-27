@@ -1,4 +1,0 @@
-﻿  Task_5.cpp
-C:\Git\Modern-Cplusplus\White Belt\Week_3\Task_5\Task_5.cpp(165): warning C4018: <: несоответствие типов со знаком и без знака
-  LINK : не найден или не выполнена сборка C:\Git\Modern-Cplusplus\White Belt\Week_3\Debug\Task_5.exe при последней инкрементной компоновке; выполняется полная компоновка
-  Task_5.vcxproj -> C:\Git\Modern-Cplusplus\White Belt\Week_3\Debug\Task_5.exe
