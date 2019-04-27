@@ -9,7 +9,6 @@
 Если left == right, функция должна корректно завершаться.
 */
 
-#include "pch.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -19,6 +18,7 @@ void EnsureEqual(const std::string& left, const std::string right)
 	if (left != right)
 		throw std::runtime_error(left + " != " + right);
 }
+
 int main()
 {
 	try
