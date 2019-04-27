@@ -21,10 +21,10 @@
  * потому что в рамках класса TimeServer мы не знаем, как обрабатывать проблемы, не связанные со сбоями сети.
  */
 
-#include "pch.h"
 #include <iostream>
 #include <exception>
 #include <string>
+
 using namespace std;
 
 string AskTimeServer() {
