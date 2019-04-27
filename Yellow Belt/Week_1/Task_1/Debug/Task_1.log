@@ -1,2 +1,4 @@
-﻿  Task_1.cpp
+﻿  pch.cpp
+  Task_1.cpp
+  LINK : не найден или не выполнена сборка D:\Git\Modern-Cplusplus\Yellow Belt\Week_1\Debug\Task_1.exe при последней инкрементной компоновке; выполняется полная компоновка
   Task_1.vcxproj -> D:\Git\Modern-Cplusplus\Yellow Belt\Week_1\Debug\Task_1.exe
