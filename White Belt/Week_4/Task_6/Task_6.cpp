@@ -5,7 +5,6 @@
  (округление производится по стандартным правилам, т.е. 0.1234 округляется до 0.123, а 0.1235 до 0.124).
 */
 
-#include "pch.h"
 #include <iostream>
 #include <fstream>
 #include <iomanip>
