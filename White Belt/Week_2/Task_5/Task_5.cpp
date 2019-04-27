@@ -2,7 +2,6 @@
  * После выполнения функции вектор source должен оказаться пустым.
  */
 
-#include "pch.h"
 #include <iostream>
 #include <string>
 #include <vector>
