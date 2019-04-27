@@ -4,7 +4,6 @@
  * Гарантируется, что хотя бы один из коэффициентов не равен нулю.
  */
 
-#include "pch.h"
 #include <iostream>
 #include <cmath>
 
