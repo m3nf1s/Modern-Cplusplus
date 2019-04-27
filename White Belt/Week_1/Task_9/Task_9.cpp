@@ -2,7 +2,6 @@
  * Выведите его в двоичной системе счисления без ведущих нулей.
  */
 
-#include "pch.h"
 #include <iostream>
 #include <vector>
 
