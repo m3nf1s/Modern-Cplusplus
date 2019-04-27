@@ -1,11 +1,11 @@
-﻿#include "pch.h"
-#include <iostream>
-#include <vector>
-
-/*
+﻿/*
 Добавьте в класс Function из задачи «Обратимая функция» обработку умножения ('*') и деления ('/').
 Гарантируется отсутствие элементарных операций умножения и деления на 0.
 */
+
+#include <iostream>
+#include <vector>
+
 struct Image
 {
 	double quality;
