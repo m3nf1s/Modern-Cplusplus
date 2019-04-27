@@ -1,12 +1,4 @@
-﻿#include "pch.h"
-#include <iostream>
-#include <string>
-#include <vector>
-#include <cmath>
-
-using namespace std;
-
-/*
+﻿/*
  * Люди стоят в очереди, но никогда не уходят из её начала, зато могут приходить в конец и уходить оттуда.
  * Более того, иногда некоторые люди могут прекращать и начинать беспокоиться из-за того, что очередь не продвигается.
  * 
@@ -27,6 +19,13 @@ using namespace std;
  * Формат вывода
  * Для каждой операции WORRY_COUNT выведите одно целое число — количество беспокоящихся людей в очереди.
  */
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <cmath>
+
+using namespace std;
 
 int main()
 {
