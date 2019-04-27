@@ -22,7 +22,6 @@
 В этой части вам нужно реализовать операторы ввода и вывода для класса Rational.
 */
 
-#include "pch.h"
 #include <iostream>
 #include <sstream>
 
