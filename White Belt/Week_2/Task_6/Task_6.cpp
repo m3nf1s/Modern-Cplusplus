@@ -1,16 +1,12 @@
-﻿// Task_6.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-#include "pch.h"
+﻿/*
+ * Реализуйте функцию void Reverse(vector<int>& v), которая переставляет элементы вектора в обратном порядке.
+ */
+ 
 #include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
-
-/*
- * Реализуйте функцию void Reverse(vector<int>& v), которая переставляет элементы вектора в обратном порядке.
- */
 
 void ReverseV1 (vector<int>& v)
 {
@@ -46,4 +42,3 @@ int main()
 	for (auto n : test)
 		cout << n << " ";
 }
-
