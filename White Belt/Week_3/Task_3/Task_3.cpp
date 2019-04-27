@@ -1,6 +1,4 @@
-﻿ //Task_3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-
-//Реализуйте класс, поддерживающий набор строк в отсортированном порядке. 
+﻿//Реализуйте класс, поддерживающий набор строк в отсортированном порядке. 
 
 #include <iostream>
 #include <string>
@@ -32,18 +30,6 @@ void PrintSortedStrings(SortedStrings& strings)
 	std::cout << std::endl;
 }
 
-struct Task
-{
-	void MakeRandom()
-	{
-		Text = "Hi";
-	}
-	int GetText()
-	{
-		return 2;
-	}
-	std::string Text;
-};
 int main()
 {
 	SortedStrings strings;
@@ -57,4 +43,3 @@ int main()
 
 	return 0;
 }
-
