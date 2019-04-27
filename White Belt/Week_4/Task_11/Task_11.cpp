@@ -23,7 +23,6 @@
 Аналогично предыдущей части, реализуйте операторы * и /.
 */
 
-#include "pch.h"
 #include <iostream>
 
 using namespace std;
