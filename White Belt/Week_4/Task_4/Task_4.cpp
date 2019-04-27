@@ -7,7 +7,6 @@
  * Гарантируется, что содержимое файла input.txt заканчивается переводом строки.
  */
 
-#include "pch.h"
 #include <fstream>
 #include <string>
 #include <iostream>
