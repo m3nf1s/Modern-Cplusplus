@@ -2,7 +2,6 @@
  * Выведите в стандартный вывод их сумму.
  */
 
-#include "pch.h"
 #include <iostream>
 
 using namespace std;
