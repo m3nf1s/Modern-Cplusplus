@@ -23,11 +23,10 @@
 
 Для остальных запросов выведите bad request.
 */
-#include "pch.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
-
 
 struct Student
 {
