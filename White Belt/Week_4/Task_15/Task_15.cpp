@@ -23,9 +23,9 @@ public:
 Rational operator / (const Rational& lhs, const Rational& rhs);
 */
 
-#include "pch.h"
 #include <iostream>
 #include <exception>
+
 using namespace std;
 
 class Rational 
@@ -99,7 +99,6 @@ Rational operator / (const Rational& lhs, const Rational& rhs)
 	return Rational(new_numerator, new_denominator);
 }
 
-
 int main() 
 {
 	try 
@@ -122,4 +121,3 @@ int main()
 	cout << "OK" << endl;
 	return 0;
 }
-
