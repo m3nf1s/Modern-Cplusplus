@@ -1,10 +1,7 @@
-﻿// Task_16.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-/*
+﻿/*
  * Напишите функцию BuildMapValuesSet, принимающую на вход словарь map<int, string> и возвращающую множество значений этого словаря:
  */
-#include "pch.h"
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -37,4 +34,3 @@ int main()
 		std::cout << value << std::endl;
 	}
 }
-
