@@ -1,10 +1,4 @@
-﻿#include "pch.h"
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-/*
+﻿/*
  * Напишите функцию, которая
  * называется IsPalindrom
  * возвращает bool
@@ -12,6 +6,11 @@ using namespace std;
  * Палиндром - это слово или фраза, которые одинаково читаются слева направо и справа налево.
  * Пустая строка является палиндромом.
  */
+ 
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 bool IsPalindrom (string word)
 {
