@@ -44,8 +44,8 @@
 - Если числитель дроби равен нулю, то знаменатель должен быть равен 1.
 */
 
-#include "pch.h"
 #include <iostream>
+
 using namespace std;
 
 class Rational
