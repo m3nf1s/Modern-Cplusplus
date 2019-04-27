@@ -1,16 +1,12 @@
-﻿// Task_7.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿/*
+ * Реализуйте функцию vector<int> Reversed(const vector<int>& v), возвращающую копию вектора v, в которой числа переставлены в обратном порядке.
+ */
 
-#include "pch.h"
 #include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
-
-/*
- * Реализуйте функцию vector<int> Reversed(const vector<int>& v), возвращающую копию вектора v, в которой числа переставлены в обратном порядке.
- */
 
 vector<int> Reversed(const vector<int>& v)
 {
