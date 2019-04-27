@@ -1,7 +1,4 @@
-﻿// Task_13.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
-/*
+﻿/*
  * Реализуйте систему хранения автобусных маршрутов. Вам нужно обрабатывать следующие запросы:
  * 
  * NEW_BUS bus stop_count stop1 stop2 ... — добавить маршрут автобуса с названием bus и stop_count остановками с названиями stop1, stop2, ...
@@ -34,16 +31,12 @@
  * Описание каждого маршрута bus должно иметь вид Bus bus: stop1 stop2 ..., где stop1 stop2 ... — список остановок автобуса bus в порядке, в котором они были заданы в соответствующей команде NEW_BUS.
  * Если автобусы отсутствуют, выведите No buses.
  */
-#include "pch.h"
+
 #include <iostream>
 #include <vector>
 #include <map>
 #include <string>
 
-/// <summary>
-/// Вывод vector на экран
-/// </summary>
-/// <param name="massive">Vector</param>
 void PrintVector(const std::vector<std::string>& massive)
 {
 	for (const auto& value : massive)
@@ -112,25 +105,18 @@ int main()
 
 			if(list_bus_stops.count(bus) != 0)
 			{
-				//список остановок
 				std::vector<std::string> stops = list_bus_stops[bus];
-				//перебираем список остановок
 				for (const auto& stop : stops)
 				{
 					std::cout << "Stop " << stop << ": ";
-					//перебираем словарь <остановка, номера автобусов>
 					for (const auto& value : list_stop_buses)
 					{
-						//если остановка совпадает с остановкой из списка
 						if(value.first == stop)
 						{
-							//перебираем список номеров автобусов
 							for (const auto& vector_bus : value.second)
 							{
-								//если текущий номер автобуса не совпадает с номером автобуса из списка, то выводим его на экран
 								if (vector_bus != bus)
 									std::cout << vector_bus << " ";
-								//иначе если текущий номер автобуса совпадает с номером автобуса из списка и список номеров автобусов содержит только данный номер, то выводим на экран сообщение
 								else if (vector_bus == bus && value.second.size() == 1)
 									std::cout << "no interchange";
 							}
