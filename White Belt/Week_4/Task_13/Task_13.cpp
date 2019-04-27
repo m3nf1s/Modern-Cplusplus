@@ -23,7 +23,6 @@
 	в качестве элементов контейнера set и ключей в контейнере map.
 */
 
-#include "pch.h"
 #include <iostream>
 #include <sstream>
 #include <map>
