@@ -14,7 +14,6 @@
 В противном случае выведите результат операции.
 */
 
-#include "pch.h"
 #include <iostream>
 #include <string>
 #include <exception>
