@@ -4,7 +4,6 @@
  * Индексы нумеруются с нуля.
  */
 
-#include "pch.h"
 #include <iostream>
 #include <string>
 
