@@ -3,7 +3,6 @@
  * Выведите в stdout их наибольший общий делитель.
  */
 
-#include "pch.h"
 #include <iostream>
 
 using namespace std;
