@@ -17,8 +17,51 @@
 
 #include "pch.h"
 #include <iostream>
+#include <vector>
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	size_t day_count;
+	int sum{ 0 };
+	int day{ 0 };
+
+	std::vector<int> temperatures;
+
+	std::cin >> day_count;
+
+	for (size_t i = 0; i < day_count; i++)
+	{
+		int temperature;
+		std::cin >> temperature;
+
+		temperatures.push_back(temperature);
+		sum += temperature;
+	}
+
+	int average = sum / day_count;
+
+	for (const int temperature : temperatures)
+	{
+		if (temperature > average)
+			day++;
+	}
+
+	std::cout << day << std::endl;
+
+	bool first{ true };
+	for (size_t i = 0; i < temperatures.size(); ++i)
+	{
+		if (temperatures.at(i) > average)
+		{
+			if (first)
+			{
+				std::cout << i;
+				first = false;
+			}
+			else
+			{
+				std::cout << ' ' << i;
+			}
+		}
+	}
 }
