@@ -1,18 +1,18 @@
 ﻿/*
  * Условие
  * В этой задаче вам надо разработать класс Matrix для представления целочисленной матрицы. Более подробно класс Matrix должен иметь:
- * 
+ *
  * 1) конструктор по умолчанию, который создаёт матрицу с нулём строк и нулём столбцов
  * 2) конструктор от двух целочисленных параметров: num_rows и num_cols, — которые задают количество строк и столбцов матрицы соответственно
  * 3) метод Reset, принимающий два целочисленных параметра, которые задают количество строк и столбцов матрицы соответственно
  * 4) константный метод At, который принимает номер строки и номер столбца (именно в этом порядке; нумерация строк и столбцов начинается с нуля) и возвращает значение в соответствущей ячейке матрицы
  * 5) неконстантный метод At с такими же параметрами, но возвращающий ссылку на значение в соответствущей ячейке матрицы
  * 6) константные методы GetNumRows и GetNumColumns, которые возвращают количество строк и столбцов матрицы соответственно
- * 
+ *
  * Если количество строк или количество столбцов, переданное в конструктор класса Matrix или метод Reset, оказалось отрицательным, то должно быть выброшено стандартное исключение out_of_range.
- * 
+ *
  * Это же исключение должен бросать метод At, если переданная в него ячейка выходит за границы матрицы.
- * 
+ *
  * Кроме того для класса Matrix должны быть определены следующие операторы:
  * 1) оператор ввода из потока istream; формат ввода простой — сначала задаётся количество строк и столбцов (именно в этом порядке),
  *		а затем все элементы матрицы: сначала элемент первой строки и первого столбца, затем элемент первой строки и второго столбца и так далее
@@ -25,13 +25,10 @@
  *		которая является их суммой; если переданные матрицы имеют разные размеры этот оператор должен выбрасывать стандартное исключение invalid_argument.
  */
 
-#include "pch.h"
 #include <iostream>
 #include <vector>
 #include <stdexcept>
 #include <fstream>
-
-using namespace std;
 
 class Matrix
 {
@@ -42,12 +39,9 @@ public:
 		_num_cols = 0;
 	}
 
-	Matrix(int num_rows, int num_cols)
-	{
-		Reset(num_rows, num_cols);
-	}
+	Matrix(int num_rows, int num_cols);
 
-	void Reset( int num_rows,  int num_cols)
+	void Reset(int num_rows, int num_cols)
 	{
 		if (num_rows < 0 || num_cols < 0)
 			throw std::out_of_range("out_of_range");
@@ -90,11 +84,11 @@ public:
 private:
 	std::vector<std::vector<int>> _matrix;
 
-	int _num_rows;
-	int _num_cols;
+	int _num_rows{};
+	int _num_cols{};
 };
 
-std::istream& operator>> (std::istream& stream, Matrix& obj)
+std::istream& operator>> (std::istream & stream, Matrix & obj)
 {
 	int rows = 0;
 	int columns = 0;
@@ -111,18 +105,18 @@ std::istream& operator>> (std::istream& stream, Matrix& obj)
 	return stream;
 }
 
-std::ostream& operator<< (std::ostream& stream, const Matrix& obj)
+std::ostream& operator<< (std::ostream & stream, const Matrix & obj)
 {
 	stream << obj.GetNumRows() << ' ' << obj.GetNumColumns() << std::endl;
 	for (int i = 0; i < obj.GetNumRows(); ++i)
 	{
 		for (int j = 0; j < obj.GetNumColumns(); ++j)
-		{	
-			if(j > 0)
+		{
+			if (j > 0)
 			{
-				stream <<  ' ';
+				stream << ' ';
 			}
-			
+
 			stream << obj.At(i, j);
 		}
 
@@ -131,7 +125,7 @@ std::ostream& operator<< (std::ostream& stream, const Matrix& obj)
 	return stream;
 }
 
-bool operator== (const Matrix& lhs, const Matrix& rhs)
+bool operator== (const Matrix & lhs, const Matrix & rhs)
 {
 	if (lhs.GetNumRows() != rhs.GetNumRows())
 		return false;
@@ -139,9 +133,9 @@ bool operator== (const Matrix& lhs, const Matrix& rhs)
 	if (lhs.GetNumColumns() != rhs.GetNumColumns())
 		return false;
 
-	for(int i = 0; i < lhs.GetNumRows(); i++)
+	for (int i = 0; i < lhs.GetNumRows(); i++)
 	{
-		for(int j = 0; j < lhs.GetNumColumns(); j++)
+		for (int j = 0; j < lhs.GetNumColumns(); j++)
 		{
 			if (lhs.At(i, j) != rhs.At(i, j))
 				return false;
@@ -151,8 +145,8 @@ bool operator== (const Matrix& lhs, const Matrix& rhs)
 	return true;
 }
 
-Matrix operator+ (const Matrix& lhs, const Matrix& rhs)
-{	
+Matrix operator+ (const Matrix & lhs, const Matrix & rhs)
+{
 	if (lhs.GetNumRows() != rhs.GetNumRows())
 		throw std::invalid_argument("invalid_argument");
 
@@ -164,7 +158,7 @@ Matrix operator+ (const Matrix& lhs, const Matrix& rhs)
 			result.At(i, j) = lhs.At(i, j) + rhs.At(i, j);
 		}
 	}
-	
+
 	return result;
 }
 
@@ -176,4 +170,9 @@ int main()
 	std::cin >> one >> two;
 	std::cout << one + two << std::endl;
 	return 0;
+}
+
+inline Matrix::Matrix(int num_rows, int num_cols)
+{
+	Reset(num_rows, num_cols);
 }
