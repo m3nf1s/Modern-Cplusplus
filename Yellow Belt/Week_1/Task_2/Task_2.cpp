@@ -15,15 +15,14 @@
 Затем K целых чисел — номера этих дней.
 */
 
-#include "pch.h"
 #include <iostream>
 #include <vector>
 
 int main()
 {
-	size_t day_count;
-	int sum{ 0 };
-	int day{ 0 };
+	size_t day_count{ 0 };
+	int64_t sum{ 0 };
+	size_t day{ 0 };
 
 	std::vector<int> temperatures;
 
@@ -31,14 +30,14 @@ int main()
 
 	for (size_t i = 0; i < day_count; i++)
 	{
-		int temperature;
+		int64_t temperature{ 0 };
 		std::cin >> temperature;
 
 		temperatures.push_back(temperature);
 		sum += temperature;
 	}
 
-	int average = sum / day_count;
+	int average = sum / static_cast<int64_t>(day_count);
 
 	for (const int temperature : temperatures)
 	{
