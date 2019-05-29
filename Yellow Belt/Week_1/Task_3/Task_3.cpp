@@ -16,11 +16,9 @@
 размеры блоков W, H, D не превосходят 10^4.
 */
 
-#include "pch.h"
 #include <iostream>
 #include <vector>
 #include <cstdint>
-
 
 class Block
 {
@@ -34,7 +32,7 @@ public:
 
 	uint64_t Squad()
 	{
-		return _width * _height * _length;
+		return _width * _height* _length;
 	}
 private:
 	uint64_t _width;
@@ -58,7 +56,7 @@ int main()
 		blocks.push_back({ new_width, new_height, new_length });
 	}
 
-	uint64_t mass{0};
+	uint64_t mass{ 0 };
 
 	for (Block& bl : blocks)
 	{
