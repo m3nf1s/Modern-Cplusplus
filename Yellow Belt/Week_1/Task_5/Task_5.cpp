@@ -41,7 +41,8 @@
 #include <vector>
 
 // Перечислимый тип для статуса задачи
-enum class TaskStatus {
+enum class TaskStatus
+{
 	NEW,          // новая
 	IN_PROGRESS,  // в разработке
 	TESTING,      // на тестировании
@@ -52,7 +53,8 @@ enum class TaskStatus {
 // позволяющего хранить количество задач каждого статуса
 using TasksInfo = std::map<TaskStatus, int>;
 
-class TeamTasks {
+class TeamTasks
+{
 public:
 	// Получить статистику по статусам задач конкретного разработчика
 	const TasksInfo& GetPersonTasksInfo(const std::string& person) const
