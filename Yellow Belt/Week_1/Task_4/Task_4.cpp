@@ -17,11 +17,13 @@
 #include <tuple>
 #include <algorithm>
 
-enum class Lang {
+enum class Lang
+{
 	DE, FR, IT
 };
 
-struct Region {
+struct Region
+{
 	std::string std_name;
 	std::string parent_std_name;
 	std::map<Lang, std::string> names;
@@ -33,6 +35,7 @@ bool operator< (const Region& lhs, const Region& rhs)
 	return std::tie(lhs.std_name, lhs.parent_std_name, lhs.names, lhs.population) <
 		std::tie(rhs.std_name, rhs.parent_std_name, rhs.names, rhs.population);
 }
+
 int FindMaxRepetitionCount(const std::vector<Region>& regions)
 {
 	int result{ 0 };
