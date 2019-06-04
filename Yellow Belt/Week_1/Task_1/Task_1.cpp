@@ -171,8 +171,3 @@ int main()
 	std::cout << one + two << std::endl;
 	return 0;
 }
-
-inline Matrix::Matrix(int num_rows, int num_cols)
-{
-	Reset(num_rows, num_cols);
-}
