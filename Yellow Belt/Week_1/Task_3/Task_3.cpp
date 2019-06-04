@@ -15,7 +15,6 @@
 плотность блоков R не превосходит 100;
 размеры блоков W, H, D не превосходят 10^4.
 */
-
 #include <iostream>
 #include <vector>
 #include <cstdint>
