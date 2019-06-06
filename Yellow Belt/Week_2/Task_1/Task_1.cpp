@@ -195,7 +195,7 @@ ostream& operator << (ostream& os, const StopsForBusResponse& r)
 //Хранит всю информацию о всех автобусных маршрутах
 struct AllBusesResponse
 {
-	std::map < std::string, std::vector<std::string>> allbuses;
+	std::map<std::string, std::vector<std::string>> allbuses;
 };
 
 ostream& operator << (ostream& os, const AllBusesResponse& r)
@@ -298,6 +298,16 @@ public:
 	{
 		return AllBusesResponse{ list_buses_stops };
 	}
+
+	std::map<std::string, std::vector<std::string>> GetBusesList()
+	{
+		return list_buses_stops;
+	}
+
+	std::map<std::string, std::vector<std::string>> GetStopsList()
+	{
+		return list_stops_buses;
+	}
 private:
 	//хранит для каждого автобуса список остановок
 	std::map<std::string, std::vector<std::string>> list_buses_stops;
@@ -305,9 +315,117 @@ private:
 	std::map<std::string, std::vector<std::string>> list_stops_buses;
 };
 
+//Unit тесты для проверки работоспособности функции AddBus
+void TestAddBus()
+{
+	{
+		BusManager t1;
+		t1.AddBus("", { "" });
+
+		std::map<std::string, std::vector<std::string>> buses;
+		std::map<std::string, std::vector<std::string>> stops;
+
+		assert(buses == t1.GetBusesList() && stops == t1.GetStopsList());
+	}
+
+	{
+		BusManager t2;
+		t2.AddBus("32K", { "Skolkovo", "Morkvino" });
+
+		std::map<std::string, std::vector<std::string>> buses =
+		{
+			{"32K",{"Skolkovo", "Morkvino"}}
+		};
+		std::map<std::string, std::vector<std::string>> stops =
+		{
+			{"Skolkovo",{"32K"}},
+			{"Morkvino", {"32K"}}
+		};
+
+		assert(buses == t2.GetBusesList() && stops == t2.GetStopsList());
+	}
+}
+
+//Unit тесты для проверки работоспособности функции BusesForStop
+void TestBusesForStop()
+{
+	{
+		BusManager t3;
+		t3.AddBus("123", { "Morkovkino" });
+		t3.AddBus("224A", { "Morkovkino" });
+
+		std::vector<std::string> buses({ "123","224A" });
+
+		assert(t3.GetBusesForStop("Morkovkino").busesforstop == buses);
+	}
+
+	{
+		BusManager t4;
+		t4.AddBus("", {});
+
+		std::vector<std::string> buses;
+		assert(t4.GetBusesForStop("").busesforstop == buses);
+	}
+
+	{
+		BusManager t5;
+		t5.AddBus("", {});
+
+		std::vector<std::string> buses;
+		assert(t5.GetBusesForStop("Savino").busesforstop == buses);
+	}
+}
+
+//Unit тесты для проверки работоспособности функции StopsForBuses
+void TestStopsForBuses()
+{
+	BusManager t6;
+	t6.AddBus("12", { "Molkino", "Svirydovsk", "Kylikovo" , "Prydnya" });
+	t6.AddBus("36A", { "Molkino", "Pyshkino" });
+	t6.AddBus("123", { "Kylikovo" , "Hlezino" });
+	t6.AddBus("15B", { "Varza", "Prydnya" });
+	std::vector<std::string> stp({ "Molkino", "Svirydovsk", "Kylikovo", "Prydnya" });
+	std::map<std::string, std::vector<std::string>> stp_bs =
+	{
+		{"Molkino", {"36A"}},
+		{"Kylikovo", {"123"}},
+		{"Prydnya", {"15B"}}
+	};
+
+	assert(t6.GetStopsForBus("12").stops == stp && t6.GetStopsForBus("12").stops_buses == stp_bs);
+}
+
+//Unit тесты для проверки работоспособности функции StopsForBuses
+void TestAllBuses()
+{
+	BusManager t7;
+	t7.AddBus("17", { "Moscow", "Volgograd" });
+	t7.AddBus("25", { "Vladivostok", "Ekaterinburg" });
+	t7.AddBus("150", { "Kostroma" });
+
+	std::map<std::string, std::vector<std::string>> allbuses =
+	{
+		{"17", { "Moscow", "Volgograd" }},
+		{"25", { "Vladivostok", "Ekaterinburg" }},
+		{"150", { "Kostroma" }}
+	};
+
+	assert(t7.GetBusesList() == allbuses);
+}
+
+void RunTests()
+{
+	TestAddBus();
+	TestBusesForStop();
+	TestStopsForBuses();
+	TestAllBuses();
+}
 // Не меняя тела функции main, реализуйте функции и классы выше
 int main()
 {
+	//RunTests();
+	//return 0;
+
 	int query_count;
 	Query q;
 
