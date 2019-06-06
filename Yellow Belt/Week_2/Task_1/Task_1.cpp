@@ -66,7 +66,44 @@ struct Query
 
 istream& operator >> (istream& is, Query& q)
 {
-	
+	std::string cmd;
+	is >> cmd;
+
+	std::map<std::string, QueryType> commands =
+	{
+		{"NEW_BUS", QueryType::NewBus},
+		{"BUSES_FOR_STOP",QueryType::BusesForStop},
+		{"STOPS_FOR_BUS", QueryType::StopsForBus},
+		{"ALL_BUSES", QueryType::AllBuses}
+	};
+
+	q.type = commands.at(cmd);
+
+	switch (q.type)
+	{
+	case QueryType::NewBus:
+		is >> q.bus;
+		is.ignore(1);
+		size_t stop_count;
+		is >> stop_count;
+		q.stops.clear();
+		for (size_t i = 0; i < stop_count; i++)
+		{
+			std::string stop;
+			is >> stop;
+			q.stops.push_back(stop);
+		}
+		break;
+	case QueryType::BusesForStop:
+		is >> q.stop;
+		break;
+	case QueryType::StopsForBus:
+		is >> q.bus;
+		break;
+	case QueryType::AllBuses:
+		;
+		break;
+	}
 	
 	return is;
 }
@@ -79,34 +116,77 @@ struct BusesForStopResponse
 
 ostream& operator << (ostream& os, const BusesForStopResponse& r)
 {
-	bool first = true;
-	for (const auto& val : r.busesforstop)
+	if (r.busesforstop.empty())
 	{
-		if (first)
-		{
-			os << val;
-			first = false;
-		}
-
-		os << ' ' << val;
+		os << "No stop";
 	}
-
+	else
+	{
+		bool first = true;
+		for (const auto& val : r.busesforstop)
+		{
+			if (first)
+			{
+				os << val;
+				first = false;
+			}
+			else
+			{
+				os << ' ' << val;
+			}
+		}
+	}
 	return os;
 }
 
 //Хранит информацию об автобусном маршруте и какие автобусы проходят через определенную остановку
+// stops - остановки в созданном порядке
+// stops_buses - остановки с номерами автобусов
 struct StopsForBusResponse
 {
-	std::map<std::string, std::vector<std::string>> stopsforbus;
-
+	std::vector<std::string> stops;
+	std::map<std::string, std::vector<std::string>> stops_buses;
 };
 
 ostream& operator << (ostream& os, const StopsForBusResponse& r)
 {
-	os << "Stop ";
-	for (const auto& [stop, buses] : r.stopsforbus)
+	//проверяем, чтобы список остановок не был пустым
+	if (!r.stops.empty())
 	{
-		if(first)
+		//перебираем список остановок
+		for (size_t i = 0; i < r.stops.size(); i++)
+		{
+			os << "Stop " << r.stops.at(i) << ": ";
+			//выводим информацию, если другие автобусы не проходят через эту остановку
+			if (r.stops_buses.count(r.stops.at(i)) == 0)
+			{
+				os << "no interchange" << std::endl;
+			}
+			else
+			{
+				bool first = true;
+				for (const auto& bus : r.stops_buses.at(r.stops.at(i)))
+				{
+					if (first)
+					{
+						os << bus;
+						first = false;
+					}
+					else
+					{
+						os << " " << bus;
+					}
+				}
+				if (i != r.stops.size() - 1)
+				{
+					os << std::endl;
+				}
+			}
+		}
+	}
+	else
+	{
+		os << "No bus";
 	}
 
 	return os;
@@ -120,7 +200,37 @@ struct AllBusesResponse
 
 ostream& operator << (ostream& os, const AllBusesResponse& r)
 {
-
+	if (!r.allbuses.empty())
+	{
+		size_t i{ 0 };
+		for (const auto& [bus, stops] : r.allbuses)
+		{
+			os << "Bus " << bus << ": ";
+			bool first = true;
+			for (const auto& stop : stops)
+			{
+				if (first)
+				{
+					os << stop;
+					first = false;
+				}
+				else
+				{
+					os << " " << stop;
+				}
+			}
+			
+			if (i != r.allbuses.size() - 1)
+			{
+				os << std::endl;
+			}
+			++i;
+		}
+	}
+	else
+	{
+		os << "No buses";
+	}
 
 	return os;
 }
@@ -133,10 +243,13 @@ public:
 	//stops - вектор остановок
 	void AddBus(const string& bus, const vector<string>& stops)
 	{
-		for (const std::string& stop : stops)
+		if (!bus.empty() && !stops.empty())
 		{
-			list_buses_stops[bus].push_back(stop);
-			list_stops_buses[stop].push_back(bus);
+			for (const std::string& stop : stops)
+			{
+				list_buses_stops[bus].push_back(stop);
+				list_stops_buses[stop].push_back(bus);
+			}
 		}
 	}
 
@@ -156,8 +269,26 @@ public:
 	StopsForBusResponse GetStopsForBus(const string& bus) const
 	{
 		StopsForBusResponse list;
-		if(list_buses_stops.count(bus) == 1)
-			list.stopsforbus = list_buses_stops.at(bus);
+		//проверяем наличие маршрута bus
+		if (list_buses_stops.count(bus) == 1)
+		{
+			//получаем копию списка остановок в порядке создания
+			list.stops = list_buses_stops.at(bus);
+			//перебираем каждую остановку, чтобы к словарю <остановка, маршруты>
+			for (const auto& stop : list.stops)
+			{
+				//перебираем автобусные маршруты в словаре <остановка, маршруты> чтобы
+				//получить список других автобусных маршрутов, которые проходят через данную остановку
+				for (const auto& b : list_stops_buses.at(stop))
+				{
+					//сравниваем маршрут с искомым, чтобы избежать добавления самого себя
+					if (b != bus)
+					{
+						list.stops_buses[stop].push_back(b);
+					}
+				}
+			}
+		}
 
 		return list;
 	}
@@ -165,9 +296,7 @@ public:
 	//Получить информацию о всех автобусах
 	AllBusesResponse GetAllBuses() const
 	{
-		AllBusesResponse list;
-
-		list.allbuses = list_buses_stops;
+		return AllBusesResponse{ list_buses_stops };
 	}
 private:
 	//хранит для каждого автобуса список остановок
@@ -177,8 +306,8 @@ private:
 };
 
 // Не меняя тела функции main, реализуйте функции и классы выше
-
-int main() {
+int main()
+{
 	int query_count;
 	Query q;
 
