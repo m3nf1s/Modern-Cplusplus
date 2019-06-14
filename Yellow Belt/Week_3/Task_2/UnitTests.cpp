@@ -6,12 +6,12 @@ void TestCorrectNumber()
 {
 	{
 		PhoneNumber pn("+7-495-111-22-33");
-		AssertEqual(pn.GetInternationalNumber(), "+7-945-111-22-33", "+7-495-111-22-33 != +7-945-111-22-33");
+		AssertEqual(pn.GetInternationalNumber(), "+7-495-111-22-33", "+7-495-111-22-33 != +7-945-111-22-33");
 	}
 
 	{
 		PhoneNumber pn("+7-495-1112233");
-		AssertEqual(pn.GetInternationalNumber(), "+7-945-1112233", "+7-945-1112233 != +7-945-1112233");
+		AssertEqual(pn.GetInternationalNumber(), "+7-495-1112233", "+7-495-1112233 != +7-945-1112233");
 
 	}
 
@@ -23,9 +23,23 @@ void TestCorrectNumber()
 
 	{
 		PhoneNumber pn("+1-2-coursera-cpp");
-		AssertEqual(pn.GetInternationalNumber(), "+1-2-courseracpp", "+1-2-coursera-cpp != +1-2-courseracpp");
+		AssertEqual(pn.GetInternationalNumber(), "+1-2-coursera-cpp", "+1-2-coursera-cpp != +1-2-courseracpp");
 
 	}
+
+	{
+		PhoneNumber pn("+0-0-0");
+		AssertEqual(pn.GetInternationalNumber(), "+0-0-0", "+0-0-0 != +0-0-0");
+
+	}
+
+	//{
+	//	PhoneNumber pn("323-22-460002");
+	//	AssertEqual(pn.GetInternationalNumber(), "+323-22-460002", "+323-22-460002 != +323-22-460002");
+
+	//}
+
+
 
 	//{
 	//	PhoneNumber pn("1-2-333");
@@ -107,7 +121,7 @@ void TestLocalNumber()
 
 	{
 		PhoneNumber pn("+1-2-coursera-cpp");
-		AssertEqual(pn.GetLocalNumber(), "courseracpp", "+1-2-coursera-cpp != courseracpp");
+		AssertEqual(pn.GetLocalNumber(), "coursera-cpp", "+1-2-coursera-cpp != coursera-cpp");
 
 	}
 }

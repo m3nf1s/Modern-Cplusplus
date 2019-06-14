@@ -1,8 +1,24 @@
 #include "phone_number.h"
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
 
-explicit PhoneNumber::PhoneNumber(const std::string& international_number)
+PhoneNumber::PhoneNumber(const std::string& international_number)
 {
+	std::stringstream ss(international_number);
 	
+	char sigh = ss.get();
+
+	getline(ss, country_code_, '-');
+
+	getline(ss, city_code_, '-');
+
+	getline(ss, local_number_);
+
+	if (sigh != '+' || country_code_.empty() || city_code_.empty() || local_number_.empty())
+	{
+		throw std::invalid_argument("Wrong phone number: " + international_number);
+	}
 }
 
 std::string PhoneNumber::GetCountryCode() const
