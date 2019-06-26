@@ -33,6 +33,10 @@
 */
 #include <iostream>
 #include "MergeSort.h"
+#include "MergeSort_Div3.h"
+
+
+#include <set>
 
 int main()
 {
@@ -44,5 +48,13 @@ int main()
 		std::cout << x << " ";
 	}
 	std::cout << std::endl;
+
+	std::vector<int> vec = { 6, 4, 7, 6, 4, 4, 0, 1, 5 };
+	MergeSort_Div3(begin(vec), end(vec));
+	for (int x : vec) {
+		std::cout << x << " ";
+	}
+	std::cout << std::endl;
+
 	return 0;
 }
