@@ -26,39 +26,10 @@
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include "Figure.h"
 
-class Figure
-{
-public:
-	virtual std::string Name() const = 0;
-	virtual double Perimeter() const = 0;
-	virtual double Area() const = 0;
-};
 
-class Rect : public Figure
-{
-public:
-	Rect(const std::string& name, const double& height, const double& width) : name_(name), height_(height), width_(width) {}
 
-	std::string Name() const override
-	{
-		return name_;
-	}
-
-	double Perimeter() const override
-	{
-		return 2 * (height_ * width_);
-	}
-
-	double Area() const override
-	{
-		return height_ * width_;
-	}
-private:
-	const std::string name_;
-	const double height_;
-	const double width_;
-};
 int main()
 {
 	std::vector<std::shared_ptr<Figure>> figures;
