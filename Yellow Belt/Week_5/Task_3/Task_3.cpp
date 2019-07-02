@@ -27,8 +27,36 @@
 #include <sstream>
 #include <iomanip>
 #include "Figure.h"
+#include "Rect.h"
+#include "Triangle.h"
+#include "Circle.h"
 
+std::shared_ptr<Figure> CreateFigure(std::istringstream& is)
+{
+	std::string figure;
+	is >> figure;
+	if (figure == "RECT")
+	{
+		double height, width;
+		is >> height >> width;
 
+		return std::make_shared<Rect>(figure, height, width);
+	}
+	else if (figure == "TRIANGLE")
+	{
+		double side_a, side_b, side_c;
+		is >> side_a >> side_b >> side_c;
+
+		return std::make_shared<Triangle>(figure, side_a, side_b, side_c);
+	}
+	else
+	{
+		double radius;
+		is >> radius;
+
+		return std::make_shared<Circle>(figure, radius);
+	}
+}
 
 int main()
 {

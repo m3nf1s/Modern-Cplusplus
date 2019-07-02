@@ -1,9 +1,12 @@
 #pragma once
+
 #include "Figure.h"
+
 class Triangle : public Figure
 {
 public:
-	Triangle(const std::string& name, const double& height, const double& width) : name_(name), height_(height), width_(width) {}
+	Triangle(const std::string& name, const double& side_a, const double& side_b, const double& side_c)
+		: name_(name), side_A_(side_a), side_B_(side_b), side_C_(side_c){}
 
 	std::string Name() const override;
 
@@ -13,7 +16,7 @@ public:
 
 private:
 	const std::string name_;
-	const double height_;
-	const double width_;
+	const double side_A_;
+	const double side_B_;
+	const double side_C_;
 };
-

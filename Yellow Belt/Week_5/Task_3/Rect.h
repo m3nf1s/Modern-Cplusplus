@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Figure.h"
 
 class Rect : public Figure

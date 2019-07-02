@@ -7,7 +7,7 @@ std::string Rect::Name() const
 
 double Rect::Perimeter() const
 {
-	return 2 * (height_ * width_);
+	return 2 * (height_ + width_);
 }
 
 double Rect::Area() const
