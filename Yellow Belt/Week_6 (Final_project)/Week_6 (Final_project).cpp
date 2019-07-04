@@ -37,29 +37,41 @@ void TestAll();
 
 int main()
 {
+	//запускаем тесты
 	TestAll();
-
+	//создаем Базу данных
 	Database db;
-
+	//считывает строку в line
 	for (string line; getline(cin, line); )
 	{
+		//помещаем line в поток ss
 		istringstream is(line);
-
+		//вводим команду
 		string command;
 		is >> command;
+		//если команда ADD
 		if (command == "Add")
 		{
+			//парсим дату
 			const auto date = ParseDate(is);
+			//парсим события
 			const auto event = ParseEvent(is);
+			//помещаем в базу данных
 			db.Add(date, event);
 		}
+		//если команда Print
 		else if (command == "Print")
 		{
+			//печатаем базу использую поток cout
 			db.Print(cout);
 		}
+		//если удалить
 		else if (command == "Del")
 		{
+			//пример: Del event != "holiday"
+			//Del date < 2017-01-01 AND (event == "holiday" OR event == "sport event")
 			auto condition = ParseCondition(is);
+			//
 			auto predicate = [condition](const Date& date, const string& event)
 			{
 				return condition->Evaluate(date, event);

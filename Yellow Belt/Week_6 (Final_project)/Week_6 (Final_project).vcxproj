@@ -155,7 +155,6 @@
     <ClCompile Include="condition_parser.cpp" />
     <ClCompile Include="condition_parser_test.cpp" />
     <ClCompile Include="database.cpp" />
-    <ClCompile Include="date.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="test_runner.cpp" />
     <ClCompile Include="token.cpp" />

@@ -3,12 +3,13 @@
 #include "date.h"
 #include <string>
 #include <map>
-#include <set>
+#include <vector>
 
 using namespace std;
 
 class Database
 {
+public:
 	//добавление события в БД
 	void Add(const Date& date, const string& new_event);
 	//вывод всех событий, которые хранятся в БД
@@ -22,5 +23,5 @@ class Database
 	void FindIf(/*?*/);
 	void Last(/*?*/);
 private:
-	map<Date, set<string>> base_;
+	map<Date, vector<string>> base_;
 };

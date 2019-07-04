@@ -18,9 +18,6 @@
     <ClCompile Include="Week_6 (Final_project).cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="date.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="database.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>

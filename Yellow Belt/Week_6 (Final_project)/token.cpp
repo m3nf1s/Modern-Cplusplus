@@ -3,6 +3,11 @@
 
 using namespace std;
 
+/// <summary>
+/// распознает команды для методов Find и Del
+/// </summary>
+/// <param name="cl">поток из которого происходит чтение</param>
+/// <returns>вектор с распозноными командами</returns>
 vector<Token> Tokenize(istream& cl)
 {
 	vector<Token> tokens;
