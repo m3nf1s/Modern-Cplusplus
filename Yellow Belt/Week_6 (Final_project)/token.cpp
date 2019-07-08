@@ -4,10 +4,10 @@
 using namespace std;
 
 /// <summary>
-/// распознает команды для методов Find и Del
+/// СЂР°СЃРїРѕР·РЅР°РµС‚ РєРѕРјР°РЅРґС‹ РґР»СЏ РјРµС‚РѕРґРѕРІ Find Рё Del
 /// </summary>
-/// <param name="cl">поток из которого происходит чтение</param>
-/// <returns>вектор с распозноными командами</returns>
+/// <param name="cl">РїРѕС‚РѕРє РёР· РєРѕС‚РѕСЂРѕРіРѕ РїСЂРѕРёСЃС…РѕРґРёС‚ С‡С‚РµРЅРёРµ</param>
+/// <returns>РІРµРєС‚РѕСЂ СЃ СЂР°СЃРїРѕР·РЅРѕРЅС‹РјРё РєРѕРјР°РЅРґР°РјРё</returns>
 vector<Token> Tokenize(istream& cl)
 {
 	vector<Token> tokens;

@@ -1,4 +1,4 @@
-﻿/*
+/*
 Введение
 В курсе «Белый пояс по С++» финальным заданием была разработка базы данных, которая работала с парами (дата, событие).
 В этой задаче вам нужно развить эту базу данных, научив её выбирать и удалять события,
@@ -111,20 +111,6 @@
 
 using namespace std;
 
-//парсит дату (год-месяц-день)
-//и возвращается готовый класс Date
-Date ParseDate(istream& is)
-{
-	int year, month, day;
-	is >> year;
-	is.ignore(1);
-	is >> month;
-	is.ignore(1);
-	is >> day;
-
-	return Date{ year,month,day };
-}
-
 //парсит новое событие
 string ParseEvent(istream& is)
 {
@@ -177,6 +163,7 @@ int main()
 			{
 				return condition->Evaluate(date, event);
 			};
+
 			int count = db.RemoveIf(predicate);
 			cout << "Removed " << count << " entries" << endl;
 		}

@@ -1,135 +1,41 @@
 ﻿  condition_parser.cpp
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser.cpp(39,13): error C2760:  синтаксическая ошибка: непредвиденный токен "идентификатор"; требуется ";"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1526): error C2259:  EmptyNode: невозможно создать экземпляр абстрактного класса
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1526): message :  из-за следующих членов:
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1526): message :  bool Node::Evaluate(const Date &,const std::string &): абстрактный
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(27): message :   см. объявление "Node::Evaluate"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1581): message :  выполняется компиляция ссылки на экземпляр шаблон функции "std::_Ref_count_obj<_Ty>::_Ref_count_obj<>(void)"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1581): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1581): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1581): message :             _Ty=EmptyNode
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1581): message :         ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1582): message :  выполняется компиляция ссылки на экземпляр шаблон функции "std::_Ref_count_obj<_Ty>::_Ref_count_obj<>(void)"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1582): message :         with
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1582): message :         [
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1582): message :             _Ty=EmptyNode
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\memory(1582): message :         ]
   condition_parser_test.cpp
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser.cpp(108,12): error C3861:  LogicalOperation: идентификатор не найден
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(12,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(13,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(18,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(19,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(24,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(25,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(26,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(27,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(28,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(33,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(34,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(35,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(40,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(41,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(42,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(47,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(48,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(53,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(54,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(55,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(56,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(61,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(62,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(63,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(64,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(69,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(70,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(75,24): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(76,25): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser_test.cpp(77,24): error C2039:  Evaluate: не является членом "Node"
   database.cpp
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): error C2678:  бинарный "<": не найден оператор, принимающий левый операнд типа "const _Ty" (или приемлемое преобразование отсутствует)
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): error C2678:         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): error C2678:         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): error C2678:             _Ty=Date
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): error C2678:         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\system_error(264,24): message :  может быть "bool std::operator <(const std::error_condition &,const std::error_condition &) noexcept"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\system_error(259,24): message :  или       "bool std::operator <(const std::error_code &,const std::error_code &) noexcept"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): message :  при попытке сопоставить список аргументов "(const _Ty, const _Ty)"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): message :             _Ty=Date
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(124,1): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(123): message :  во время компиляции функции-члена класс шаблон "bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(123): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(123): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(123): message :             _Kty=Date,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(123): message :             _Ty=Date
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xstddef(123): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xutility(627): message :  выполняется компиляция ссылки на экземпляр шаблон функции "bool std::less<_Kty>::operator ()(const _Ty &,const _Ty &) const"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xutility(627): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xutility(627): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xutility(627): message :             _Kty=Date,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xutility(627): message :             _Ty=Date
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xutility(627): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xmemory0(1503): message :  выполняется компиляция ссылки на экземпляр класс шаблон функции "std::less<_Kty>"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xmemory0(1503): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xmemory0(1503): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xmemory0(1503): message :             _Kty=Date
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xmemory0(1503): message :         ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xmemory0(1502): message :  выполняется компиляция ссылки на шаблон переменной "const bool is_empty_v<std::less<Date> >"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\map(68): message :  выполняется компиляция ссылки на экземпляр класс шаблон функции "std::_Tree<std::_Tmap_traits<_Kty,_Ty,_Pr,_Alloc,false>>"
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\map(68): message :         with
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\map(68): message :         [
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\map(68): message :             _Kty=Date,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\map(68): message :             _Ty=std::vector<std::string,std::allocator<std::string>>,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\map(68): message :             _Pr=std::less<Date>,
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\map(68): message :             _Alloc=std::allocator<std::pair<const Date,std::vector<std::string,std::allocator<std::string>>>>
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\map(68): message :         ]
   date.cpp
   node.cpp
   test_runner.cpp
   token.cpp
   Week_6 (Final_project).cpp
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(26): message :  выполняется компиляция ссылки на экземпляр класс шаблон функции "std::map<Date,std::vector<std::string,std::allocator<_Ty>>,std::less<_Kty>,std::allocator<std::pair<const _Kty,std::vector<_Ty,std::allocator<_Ty>>>>>"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(26): message :         with
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(26): message :         [
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(26): message :             _Ty=std::string,
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(26): message :             _Kty=Date
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(26): message :         ]
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(77,1): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(77,1): error C2039:  __this: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(79,38): error C2440:  инициализация: невозможно преобразовать "void" в "int"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(79,14): message :  Выражение, имеющее тип void, нельзя преобразовать в другой тип
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(87,1): error C2039:  Evaluate: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(87,1): error C2039:  __this: не является членом "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\node.h(3): message :   см. объявление "Node"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(90,44): error C2660:  Database::FindIf: функция не принимает 1 аргументов
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(23,7): message :   см. объявление "Database::FindIf"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(90,23): error C2789:  "entries": требуется инициализация объекта типа класса, квалифицированного как const
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(90): message :   см. объявление "entries"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(91,36): error C3536:  entries: не может использоваться до инициализации
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(92,4): error C3312:  не найдена вызываемая функция "begin" для типа "int"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(92,4): error C3312:  не найдена вызываемая функция "end" для типа "int"
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(93,13): error C2065:  entry: необъявленный идентификатор
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(101,34): error C2660:  Database::Last: функция не принимает 1 аргументов
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\condition_parser.cpp(147): message :  выполняется компиляция ссылки на экземпляр шаблон функции "std::shared_ptr<EmptyNode> std::make_shared<EmptyNode,>(void)"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\algorithm(142,1): error C2064:  результатом вычисления фрагмента не является функция, принимающая 1 аргументов
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\algorithm(142,1): message :  класс не определяет "operator()" или пользовательский оператор преобразования в указатель на функцию или ссылку на функцию, принимающий подходящее число аргументов
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :  выполняется компиляция ссылки на экземпляр шаблон функции "_InIt std::find_if<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const _Kty,_Ty>>>>,Func>(_InIt,const _InIt,_Pr)"
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :         with
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :         [
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :             _InIt=std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const Date,std::vector<std::string,std::allocator<std::string>>>>>>,
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :             _Kty=Date,
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :             _Ty=std::vector<std::string,std::allocator<std::string>>,
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :             Func=main::<lambda_adf37630cba528c988d7ce0f9201230a>,
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :             _Pr=main::<lambda_adf37630cba528c988d7ce0f9201230a>
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(31): message :         ]
   Создание кода...
-D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\database.h(24,7): message :   см. объявление "Database::Last"
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(178): message :  выполняется компиляция ссылки на экземпляр шаблон функции "std::vector<std::string,std::allocator<_Ty>> Database::FindIf<main::<lambda_adf37630cba528c988d7ce0f9201230a>>(Func)"
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(178): message :         with
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(178): message :         [
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(178): message :             _Ty=std::string,
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(178): message :             Func=main::<lambda_adf37630cba528c988d7ce0f9201230a>
+D:\Git\Modern-Cplusplus\Yellow Belt\Week_6 (Final_project)\Week_6 (Final_project).cpp(178): message :         ]

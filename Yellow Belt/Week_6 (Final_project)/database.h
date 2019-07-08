@@ -4,24 +4,46 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <algorithm>
+#include <tuple>
 
 using namespace std;
 
 class Database
 {
 public:
-	//добавление события в БД
-	void Add(const Date& date, const string& new_event);
-	//вывод всех событий, которые хранятся в БД
-	void Print(ostream& os);
-	//
-	template<class Func>
-	void RemoveIf(Func predicate)
-	{
 
+	//РґРѕР±Р°РІР»РµРЅРёРµ СЃРѕР±С‹С‚РёСЏ РІ Р‘Р”
+	void Add(const Date& date, const string& new_event);
+
+	//РІС‹РІРѕРґ РІСЃРµС… СЃРѕР±С‹С‚РёР№, РєРѕС‚РѕСЂС‹Рµ С…СЂР°РЅСЏС‚СЃСЏ РІ Р‘Р”
+	void Print(ostream& os);
+
+	template<class Func>
+	int RemoveIf(Func predicate)
+	{
+		
 	}
-	void FindIf(/*?*/);
-	void Last(/*?*/);
+
+	template<class Func>
+	vector<string> FindIf(Func predicate)
+	{
+		auto it = find_if(base_.begin(), base_.end(), predicate);
+	}
+
+	template <class Func>
+	string Last(Func function)
+	{
+		
+	}
 private:
 	map<Date, vector<string>> base_;
 };
+
+bool operator< (const Date& lhs, const Date& rhs)
+{
+	auto lhs_key = tie(lhs.year_, lhs.month_, lhs.day_);
+	auto rhs_key = tie(rhs.year_, rhs.month_, rhs.day_);
+
+	return lhs_key < rhs_key;
+}
