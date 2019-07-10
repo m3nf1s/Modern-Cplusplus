@@ -16,3 +16,10 @@ public:
 //парсит дату (год-месяц-день)
 //и возвращается готовый класс Date
 Date ParseDate(istream& is);
+
+bool operator< (const Date& lhs, const Date& rhs);
+bool operator<= (const Date& lhs, const Date& rhs);
+bool operator> (const Date& lhs, const Date& rhs);
+bool operator>= (const Date& lhs, const Date& rhs);
+bool operator== (const Date& lhs, const Date& rhs);
+bool operator!= (const Date& lhs, const Date& rhs);

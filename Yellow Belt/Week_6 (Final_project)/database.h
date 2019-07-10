@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <tuple>
+#include <set>
 
 using namespace std;
 
@@ -28,22 +29,12 @@ public:
 	template<class Func>
 	vector<string> FindIf(Func predicate)
 	{
-		auto it = find_if(base_.begin(), base_.end(), predicate);
+	
 	}
 
-	template <class Func>
-	string Last(Func function)
-	{
-		
-	}
+	pair<Date, string> Last(const Date& date);
 private:
 	map<Date, vector<string>> base_;
+	map<Date, set<string>> unique_base_;
 };
 
-bool operator< (const Date& lhs, const Date& rhs)
-{
-	auto lhs_key = tie(lhs.year_, lhs.month_, lhs.day_);
-	auto rhs_key = tie(rhs.year_, rhs.month_, rhs.day_);
-
-	return lhs_key < rhs_key;
-}

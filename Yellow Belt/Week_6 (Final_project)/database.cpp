@@ -6,13 +6,14 @@ void Database::Add(const Date& date, const string& new_event)
 {
 	if (!new_event.empty())
 	{
-		auto events_begin = base_[date].begin();
-		auto events_end = base_[date].end();
+		auto events_begin = unique_base_[date].begin();
+		auto events_end = unique_base_[date].end();
 
-		auto it = find(events_begin, events_end, new_event);
-		if (it == base_[date].end())
+		auto flag = binary_search(events_begin, events_end, new_event);
+		if (!flag)
 		{
 			base_[date].push_back(new_event);
+			unique_base_[date].insert(new_event);
 		}
 	}
 }

@@ -12,3 +12,51 @@ Date ParseDate(istream& is)
 
 	return { year, month, day };
 }
+
+bool operator< (const Date& lhs, const Date& rhs)
+{
+	auto lhs_key = tie(lhs.year_, lhs.month_, lhs.day_);
+	auto rhs_key = tie(rhs.year_, rhs.month_, rhs.day_);
+
+	return lhs_key < rhs_key;
+}
+
+bool operator<= (const Date& lhs, const Date& rhs)
+{
+	auto lhs_key = tie(lhs.year_, lhs.month_, lhs.day_);
+	auto rhs_key = tie(rhs.year_, rhs.month_, rhs.day_);
+
+	return lhs_key <= rhs_key;
+}
+
+bool operator> (const Date& lhs, const Date& rhs)
+{
+	auto lhs_key = tie(lhs.year_, lhs.month_, lhs.day_);
+	auto rhs_key = tie(rhs.year_, rhs.month_, rhs.day_);
+
+	return lhs_key > rhs_key;
+}
+
+bool operator>= (const Date& lhs, const Date& rhs)
+{
+	auto lhs_key = tie(lhs.year_, lhs.month_, lhs.day_);
+	auto rhs_key = tie(rhs.year_, rhs.month_, rhs.day_);
+
+	return lhs_key >= rhs_key;
+}
+
+bool operator== (const Date& lhs, const Date& rhs)
+{
+	auto lhs_key = tie(lhs.year_, lhs.month_, lhs.day_);
+	auto rhs_key = tie(rhs.year_, rhs.month_, rhs.day_);
+
+	return lhs_key == rhs_key;
+}
+
+bool operator!= (const Date& lhs, const Date& rhs)
+{
+	auto lhs_key = tie(lhs.year_, lhs.month_, lhs.day_);
+	auto rhs_key = tie(rhs.year_, rhs.month_, rhs.day_);
+
+	return lhs_key != rhs_key;
+}
