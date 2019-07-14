@@ -2,6 +2,7 @@
 
 #include "date.h"
 #include <string>
+#include <memory>
 
 using namespace std;
 
@@ -36,7 +37,7 @@ public:
 class DateComparisonNode : public Node
 {
 public: 
-	DateComparisonNode(const Comparison& cmp, const Date& date) : cmp_(cmp), date_(date) {}
+	DateComparisonNode(Comparison cmp, const Date& date) : cmp_(cmp), date_(date) {}
 	bool Evaluate(const Date& date, const string& event) override;
 private:
 	const Comparison cmp_;
@@ -46,7 +47,7 @@ private:
 class EventComparisonNode : public Node
 {
 public:
-	EventComparisonNode(const Comparison& cmp, const string& event) : cmp_(cmp), event_(event) {}
+	EventComparisonNode(Comparison cmp, const string& event) : cmp_(cmp), event_(event) {}
 	bool Evaluate(const Date& date, const string& event) override;
 private:
 	const Comparison cmp_;
@@ -56,7 +57,7 @@ private:
 class LogicalOperationNode : public Node
 {
 public:
-	LogicalOperationNode(const LogicalOperation& lop, const shared_ptr<Node>& lhs, const shared_ptr<Node>& rhs) : logop_(lop), lhs_(lhs), rhs_(rhs) {}
+	LogicalOperationNode(LogicalOperation lop, const shared_ptr<Node>& lhs, const shared_ptr<Node>& rhs) : logop_(lop), lhs_(lhs), rhs_(rhs) {}
 	bool Evaluate(const Date& date, const string& event) override;
 private:
 	const LogicalOperation logop_;

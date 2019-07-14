@@ -1,5 +1,10 @@
+#include <iostream>
+#include <iomanip>
+#include <tuple>
+
 #include "date.h"
 
+//Парсим дату
 Date ParseDate(istream& is)
 {
 	int year, month, day;
@@ -8,9 +13,15 @@ Date ParseDate(istream& is)
 	is >> month;
 	is.ignore(1);
 	is >> day;
-	is.ignore(1);
 
 	return { year, month, day };
+}
+
+ostream& operator<< (ostream& os, const Date& date)
+{
+	return os << setw(4) << setfill('0') << date.year_ << '-' <<
+		setw(2) << setfill('0') << date.month_ << '-' <<
+		setw(2) << setfill('0') << date.day_;
 }
 
 bool operator< (const Date& lhs, const Date& rhs)

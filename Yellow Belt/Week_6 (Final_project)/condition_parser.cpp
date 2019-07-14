@@ -1,8 +1,8 @@
+#include <map>
+
 #include "condition_parser.h"
 #include "token.h"
-#include "date.h"
 
-#include <map>
 using namespace std;
 
 template <class It>

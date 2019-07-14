@@ -1,4 +1,6 @@
 #include "node.h"
+#include "date.h"
+#include <string>
 
 bool EmptyNode::Evaluate(const Date& date, const string& event)
 {

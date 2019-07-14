@@ -3,6 +3,7 @@
 #include <iostream>
 
 using namespace std;
+
 //хранит в себе дату год-месяц-день
 class Date
 {
@@ -16,6 +17,8 @@ public:
 //парсит дату (год-месяц-день)
 //и возвращается готовый класс Date
 Date ParseDate(istream& is);
+
+ostream& operator<< (ostream& os, const Date& date);
 
 bool operator< (const Date& lhs, const Date& rhs);
 bool operator<= (const Date& lhs, const Date& rhs);
