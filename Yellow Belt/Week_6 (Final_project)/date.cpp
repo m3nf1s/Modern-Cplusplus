@@ -4,7 +4,7 @@
 
 #include "date.h"
 
-//Парсим дату
+//РџР°СЂСЃРёРј РґР°С‚Сѓ
 Date ParseDate(istream& is)
 {
 	int year, month, day;

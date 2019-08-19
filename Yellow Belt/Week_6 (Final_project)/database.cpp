@@ -3,7 +3,7 @@
 
 #include "database.h"
 
-//Добавляем событие в БД
+//Р”РѕР±Р°РІР»СЏРµРј СЃРѕР±С‹С‚РёРµ РІ Р‘Р”
 void Database::Add(const Date& date, const string& new_event)
 { 	
 	if (unique_base_[date].count(new_event) == 0)
@@ -12,7 +12,7 @@ void Database::Add(const Date& date, const string& new_event)
 		unique_base_[date].insert(new_event);
 	}
 }
-//Выводим всю БД в формате День-Событие
+//Р’С‹РІРѕРґРёРј РІСЃСЋ Р‘Р” РІ С„РѕСЂРјР°С‚Рµ Р”РµРЅСЊ-РЎРѕР±С‹С‚РёРµ
 void Database::Print(ostream& os) const
 {
 	for (const auto& [date, events] : base_)
@@ -23,20 +23,10 @@ void Database::Print(ostream& os) const
 		}		
 	}
 }
-//Выводим послденее добавленное событие к указанной дате
-//или последнее событие во всей БД
+//Р’С‹РІРѕРґРёРј РїРѕСЃР»РµРґРЅРµРµ РґРѕР±Р°РІР»РµРЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ Рє СѓРєР°Р·Р°РЅРЅРѕР№ РґР°С‚Рµ
+//РёР»Рё РїРѕСЃР»РµРґРЅРµРµ СЃРѕР±С‹С‚РёРµ РІРѕ РІСЃРµР№ Р‘Р”
 pair<Date, string> Database::Last(const Date& date) const
 {
-	if (base_.count(date))
-	{
-		if (base_.at(date).empty())
-		{
-			throw invalid_argument("");
-		}
-
-		return make_pair(date, base_.at(date).back());
-	}
-
 	auto it = base_.upper_bound(date);
 	if (it == base_.begin())
 	{
@@ -44,11 +34,6 @@ pair<Date, string> Database::Last(const Date& date) const
 	}
 
 	--it;
-
-	if (it->second.empty())
-	{
-		throw invalid_argument("");
-	}
 
 	return make_pair(it->first, it->second.back());
 }
