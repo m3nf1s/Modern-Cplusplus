@@ -13,7 +13,7 @@ public:
 		IteratorRange<Iterator> temp(first, last);
 		while (temp.begin() != temp.end())
 		{
-			IteratorRange<Iterator> page = Head(temp.begin(), temp.end(), page_size);
+			IteratorRange<Iterator> page = MakePage(temp.begin(), temp.end(), page_size);
 			_pages.push_back(page);
 			temp.begin() = page.end();
 		}
