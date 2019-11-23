@@ -24,7 +24,7 @@ private:
 };
 
 template <typename Iterator>
-auto Head(Iterator f, Iterator l, size_t top)
+auto MakePage(Iterator f, Iterator l, size_t top)
 {
 	return IteratorRange(f, std::next(f, std::min<size_t>(top, (l - f))));
 }
