@@ -10,12 +10,10 @@ class Paginator
 public:
 	Paginator(Iterator first, Iterator last, size_t page_size)
 	{	
-		IteratorRange<Iterator> temp(first, last);
-		while (temp.begin() != temp.end())
+		while (first != last)
 		{
-			IteratorRange<Iterator> page = MakePage(temp.begin(), temp.end(), page_size);
-			_pages.push_back(page);
-			temp.begin() = page.end();
+			_pages.push_back(MakePage(first, last, page_size));
+			first = _pages[_pages.size() - 1].end();
 		}
 	}
 

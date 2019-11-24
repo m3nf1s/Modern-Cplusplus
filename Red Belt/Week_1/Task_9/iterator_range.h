@@ -11,11 +11,7 @@ public:
 
 	Iterator begin() const { return first; }
 
-	Iterator end() const { return last;	}
-
-	Iterator& begin() { return first; }
-
-	Iterator& end() { return last; }
+	Iterator end() const { return last; }
 
 	size_t size() const { return last - first; }
 
