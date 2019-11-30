@@ -50,17 +50,17 @@ int main()                                                                      
   int query_count;
   cin >> query_count;
 
-  for (int query_id = 0; query_id < query_count; ++query_id)
+  for (int query_id = 0; query_id < query_count; ++query_id)                                // O(Q)
   {
     string query_type;
     cin >> query_type;
     int start, finish;
     cin >> start >> finish;
     if (query_type == "ADD")
-	{
+	  {
       routes.AddRoute(start, finish);
     } else if (query_type == "GO")
-	{
+	  {
       cout << routes.FindNearestFinish(start, finish) << "\n";
     }
   }
