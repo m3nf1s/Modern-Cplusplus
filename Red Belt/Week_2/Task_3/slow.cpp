@@ -7,31 +7,32 @@
 
 using namespace std;
 
-class RouteManager {
+class RouteManager
+{
 public:
-  void AddRoute(int start, int finish)														// Total: O(log(Q))
+  void AddRoute(int start, int finish)                                                      // Total: O(log(Q))
   {
-    reachable_lists_[start].push_back(finish);												// O(log(Q) + Arm O(1))
-    reachable_lists_[finish].push_back(start);												// O(log(Q) + Arm O(1))
+    reachable_lists_[start].push_back(finish);                                              // O(log(Q) + Arm O(1))
+    reachable_lists_[finish].push_back(start);                                              // O(log(Q) + Arm O(1))
   }
 
-  int FindNearestFinish(int start, int finish) const										// Total: O(Q)
+  int FindNearestFinish(int start, int finish) const                                        // Total: O(Q)
   {
-    int result = abs(start - finish);														// O(1)
-    if (reachable_lists_.count(start) < 1)													// O(log(Q)
-	{
+    int result = abs(start - finish);                                                       // O(1)
+    if (reachable_lists_.count(start) < 1)                                                  // O(log(Q)
+	  {
         return result;
     }
 
-    const vector<int>& reachable_stations = reachable_lists_.at(start);						// O(1)
+    const vector<int>& reachable_stations = reachable_lists_.at(start);                     // O(1)
 
-    if (!reachable_stations.empty())														// O(1)
-	{
-      result = min(																			// O(1)
+    if (!reachable_stations.empty())                                                        // O(1)
+	  {
+      result = min(                                                                         // O(1)
           result,
-          abs(finish - *min_element(														// O(1)
+          abs(finish - *min_element(                                                        // O(1)
               begin(reachable_stations), end(reachable_stations),
-              [finish](int lhs, int rhs) { return abs(lhs - finish) < abs(rhs - finish); }	// O(Q)
+              [finish](int lhs, int rhs) { return abs(lhs - finish) < abs(rhs - finish); }  // O(Q)
           ))
       );
     }
@@ -42,7 +43,7 @@ private:
 };
 
 
-int main()																					// Total: O(Q^2)
+int main()                                                                                  // Total: O(Q^2)
 {
   RouteManager routes;
 
