@@ -1,12 +1,17 @@
-﻿#include <string>
+﻿/*
+	Разработать макрос UNIQ_ID, который будет формировать идентификатор, уникальный в пределах данного cpp-файла.
+*/
+#include <string>
 #include <vector>
+
 using namespace std;
 
 #define UNIQ_ID_IMPL_2(lineno) _a_local_var_##lineno
 #define UNIQ_ID_IMPL(lineno) UNIQ_ID_IMPL_2(lineno)
 #define UNIQ_ID UNIQ_ID_IMPL(__LINE__)
 
-int main() {
+int main()
+{
 	int UNIQ_ID = 0;
 	string UNIQ_ID = "hello";
 	vector<string> UNIQ_ID = { "hello", "world" };
