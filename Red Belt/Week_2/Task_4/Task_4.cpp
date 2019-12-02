@@ -64,10 +64,12 @@ public:
 
 	double Cheer(int user_id)
 	{
-		if (user_page_counts_[user_id] == 0) {
+		if (user_page_counts_[user_id] == 0)
+		{
 			return 0;
 		}
-		if (total_users_ == 1) {
+		if (total_users_ == 1)
+		{
 			return 1;
 		}
 
