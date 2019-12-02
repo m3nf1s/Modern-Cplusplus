@@ -1,4 +1,25 @@
-﻿#include "airline_ticket.h"
+﻿/*
+	Давайте представим, что вы разрабатываете инновационный сервис поиска авиабилетов AviaScanner.
+
+	В данный момент вы работаете над функцией сортировки результатов поиска.
+	Пользователь вводит свой запрос и получает список подходящих билетов.
+	Дальше он может задавать параметры сортировки этого списка.
+	Например, сначала по цене, затем по времени вылета и, наконец, по аэропорту прилёта.
+
+	Напишите макрос SORT_BY, который принимает в качестве параметра имя поля структуры AirlineTicket.
+	Вызов sort(begin(tixs), end(tixs), SORT_BY(some_field)) должен приводить к сортировке вектора tixs по полю some_field.
+
+	Вам дан файл airline_ticket.h, содержащий объявления структур Time, Date и AirlineTicket,
+		а также заготовка решения в виде cpp-файла sort_by.cpp.
+
+	Пришлите на проверку cpp-файл, который
+	* подключает заголовочный файл airline_ticket.h
+	* содержит макрос SORT_BY
+	* содержит определения операторов, необходимых для использования классов Date и
+		Time в алгоритме сортировки и макросе ASSERT_EQUAL (формат вывода в поток можете выбрать произвольный)
+*/
+
+#include "airline_ticket.h"
 #include "test_runner.h"
 
 #include <algorithm>
@@ -6,10 +27,10 @@
 
 using namespace std;
 
-#define SORT_BY(field)											\
-	[](const AirlineTicket& lhs, const AirlineTicket& rhs)		\
-	{															\
-		return lhs.field < rhs.field;							\
+#define SORT_BY(field)						\
+	[](const AirlineTicket& lhs, const AirlineTicket& rhs)	\
+	{							\
+		return lhs.field < rhs.field;			\
 	}															
 
 
@@ -37,7 +58,8 @@ void TestSortBy()
 	ASSERT_EQUAL(tixs.back().arrival_date, (Date{ 2018, 3, 5 }));
 }
 
-int main() {
+int main()
+{
 	TestRunner tr;
 	RUN_TEST(tr, TestSortBy);
 }
