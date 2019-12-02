@@ -5,7 +5,8 @@
 
 using namespace std;
 
-struct Student {
+struct Student
+{
 	string first_name;
 	string last_name;
 	map<string, double> marks;

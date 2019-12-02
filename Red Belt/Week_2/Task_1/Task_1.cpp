@@ -1,4 +1,21 @@
-﻿#include "student.h"
+﻿/*
+	В данной задаче необходимо оптимизировать код, использующийся для сортировки студентов по рейтингу.
+	Данные каждого студента находятся в структуре Student, объявленной в файле student.h.
+	Рейтинг студента записан в поле rating.
+
+	Для сортировки студентов по рейтингу используется функция сравнения, возвращающая true,
+		если рейтинг студента first выше рейтинга студента second.
+
+	bool Compare(Student first, Student second) {
+		return first.Less(second);
+	}
+
+	Было выявлено, что эта функция является узким местом процесса сортировки, и именно её нужно оптимизировать.
+
+	Пришлите на проверку файл, содержащий оптимизированную версию функции Compare.
+	Если ваша реализация будет недостаточно эффективной, то решение не уложится в ограничение по времени.
+*/
+#include "student.h"
 #include "test_runner.h"
 #include "profiler.h"
 
@@ -18,7 +35,8 @@ void TestComparison()
 
 	Student newbie
 	{
-	  "Ivan", "Ivanov", {
+	  "Ivan", "Ivanov",
+	  {
 		{"c++", 1.0},
 		{"algorithms", 3.0}
 	  },
@@ -27,7 +45,8 @@ void TestComparison()
 
 	Student cpp_expert
 	{
-	  "Petr", "Petrov", {
+	  "Petr", "Petrov",
+	  {
 		{"c++", 9.5},
 		{"algorithms", 6.0}
 	  },
@@ -36,7 +55,8 @@ void TestComparison()
 
 	Student guru
 	{
-	  "Sidor", "Sidorov", {
+	  "Sidor", "Sidorov",
+	  {
 		{"c++", 10.0},
 		{"algorithms", 10.0}
 	  },
