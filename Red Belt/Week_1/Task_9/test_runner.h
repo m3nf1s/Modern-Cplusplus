@@ -90,7 +90,7 @@ public:
 		try
 		{
 			func();
-			cerr << test_name << " OK" << endl;
+			cerr << test_name << " OK " << endl;
 		}
 		catch (exception& e)
 		{
@@ -117,21 +117,21 @@ private:
 	int fail_count = 0;
 };
 
-#define ASSERT_EQUAL(x, y)								\
-{														\
-	ostringstream test_runner_os;						\
-	test_runner_os << (#x) << " != " << (#y) << ", "	\
-	   << __FILE__ << ":" << __LINE__;					\
-	AssertEqual(x, y, test_runner_os.str());			\
+#define ASSERT_EQUAL(x, y)			\
+{						\
+	ostringstream os;			\
+	os << #x << " != " << #y << ", "	\
+	   << __FILE__ << ":" << __LINE__;	\
+	AssertEqual(x, y, os.str());		\
 }
 
-#define ASSERT(x)										\
-{														\
-	ostringstream test_runner_os;						\
-	test_runner_os << (#x) << " is false, "				\
-	   << __FILE__ << ":" << __LINE__;					\
-	Assert(x, test_runner_os.str());					\
+#define ASSERT(x)				\
+{						\
+	ostringstream os;			\
+	os << #x << " is false, "		\
+	   << __FILE__ << ":" << __LINE__;	\
+	Assert(x, os.str());			\
 }
 
-#define RUN_TEST(tr, func)								\
+#define RUN_TEST(tr, func)			\
 	tr.RunTest(func, #func)
