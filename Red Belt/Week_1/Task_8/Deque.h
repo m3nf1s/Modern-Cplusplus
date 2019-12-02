@@ -11,32 +11,32 @@ public:
 
 	bool Empty() const
 	{
-		return _front.empty() && _back.empty();
+		return front_.empty() && back_.empty();
 	}
 
 	size_t Size() const
 	{
-		return _front.size() + _back.size();
+		return front_.size() + back_.size();
 	}
 
 	const T& operator[] (const size_t index) const
 	{
-		if (index < _front.size())
+		if (index < front_.size())
 		{
-			return _front[Size() - 1 - index];
+			return front_[Size() - 1 - index];
 		}
 
-		return _back[index - _front.size()];
+		return back_[index - front_.size()];
 	}
 
 	T& operator[] (const size_t index)
 	{
-		if (index < _front.size())
+		if (index < front_.size())
 		{
-			return _front[_front.size() - 1 - index];
+			return front_[front_.size() - 1 - index];
 		}
 
-		return _back[index - _front.size()];
+		return back_[index - front_.size()];
 	}
 
 	const T& At(const size_t index) const
@@ -55,56 +55,56 @@ public:
 
 	const T& Front() const
 	{
-		if (_front.empty())
+		if (front_.empty())
 		{
-			return _back.front();
+			return back_.front();
 		}
 
-		return _front.back();
+		return front_.back();
 	}
 
 	T& Front()
 	{
-		if (_front.empty())
+		if (front_.empty())
 		{
-			return _back.front();
+			return back_.front();
 		}
 
-		return _front.back();
+		return front_.back();
 	}
 
 	const T& Back() const
 	{
-		if (_back.empty())
+		if (back_.empty())
 		{
-			return _front.front();
+			return front_.front();
 		}
 
-		return _back.back();
+		return back_.back();
 	}
 
 	T& Back()
 	{
-		if (_back.empty())
+		if (back_.empty())
 		{
-			return _front.front();
+			return front_.front();
 		}
 
-		return _back.back();
+		return back_.back();
 	}
 
 	void PushFront(const T& value)
 	{
-		_front.push_back(value);
+		front_.push_back(value);
 	}
 
 	void PushBack(const T& value)
 	{
-		_back.push_back(value);
+		back_.push_back(value);
 	}
 
 private:
-	std::vector<T> _front, _back;
+	std::vector<T> front_, back_;
 
 	void CheckIndex(const size_t index)
 	{
