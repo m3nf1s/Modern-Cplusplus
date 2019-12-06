@@ -30,7 +30,7 @@ public:
 
 	~LinkedList()
 	{
-		while (head != nullptr)
+		while (head)
 		{
 			PopFront();
 		}
@@ -38,67 +38,46 @@ public:
 
 	void PushFront(const T& value)
 	{
-		if (head == nullptr)
-		{
-			head = new Node;
-			head->value = value;
-		}
-		else
-		{
-			auto pTemp = head;
-			head = new Node;
-			head->value = value;
-			head->next = pTemp;
-		}
+		auto pHead = new Node{ value };
+		pHead->next = head;
+		head = pHead;
 	}
+
 	void InsertAfter(Node* node, const T& value)
 	{
-		if (node == nullptr)
+		if (node)
+		{
+			auto pTemp = new Node{ value };
+			pTemp->next = node->next;
+			node->next = pTemp;
+		}
+		else
 		{
 			PushFront(value);
 		}
-		else
-		{
-			auto pTemp = node->next;
-			node->next = new Node;
-			node->next->value = value;
-			node->next->next = pTemp;
-		}
 	}
+	
 	void RemoveAfter(Node* node)
 	{
-		if (node == nullptr)
+		if (!node)
 		{
 			PopFront();
 		}
-		else if (node->next == nullptr)
+		else if (node->next)
 		{
-			return;
-		}
-		else
-		{
-			auto pTemp = node->next->next;
-			delete node->next;
-			node->next = pTemp;
+			auto pTemp = node->next;
+			node->next = pTemp->next;
+			delete pTemp;
 		}
 	}
 
 	void PopFront()
 	{
-		if (head == nullptr)
+		if (head)
 		{
-			return;
-		}
-		else if (head->next == nullptr)
-		{
-			delete head;
-			head = nullptr;
-		}
-		else
-		{
-			auto pTemp = head->next;
-			delete head;
-			head = pTemp;
+			auto pTemp = head;
+			head = pTemp->next;
+			delete pTemp;
 		}
 	}
 
@@ -106,8 +85,8 @@ public:
 	{
 		return head;
 	}
-	const Node* GetHead() const 
-	{ 
+	const Node* GetHead() const
+	{
 		return head;
 	}
 
