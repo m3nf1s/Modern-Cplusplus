@@ -32,6 +32,8 @@
 class Translator
 {
 public:
+    Translator() = default;
+
     void Add(std::string_view source, std::string_view target)
     {
         std::string_view src = CloneStringView(source);
@@ -62,7 +64,7 @@ public:
 private:
     std::map<std::string_view, std::string_view> forward_dict_;
     std::map<std::string_view, std::string_view> backward_dict_;
-    std::deque<std::string> data;
+    std::deque<std::string> data_;
 
     std::string_view CloneStringView(std::string_view str)
     {
@@ -78,7 +80,7 @@ private:
             return it_backward->first;
         }
 
-        return data.emplace_back(str);
+        return data_.emplace_back(str);
     }
 };
 
