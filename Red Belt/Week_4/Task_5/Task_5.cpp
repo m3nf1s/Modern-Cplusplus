@@ -41,9 +41,11 @@
     *   метод GetText() вызывается один раз в каждом из тестов.
 */
 #include "profiler.h"
-#include <string>
 #include "test_runner.h"
+
+#include <string>
 #include <list>
+
 class Editor
 {
 public:
