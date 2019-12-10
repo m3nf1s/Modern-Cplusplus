@@ -5,7 +5,6 @@
 #include <string_view>
 #include <map>
 #include <array>
-#include <set>
 
 class Stats 
 {
@@ -20,18 +19,28 @@ private:
 	std::map<std::string_view, int> methods_;
 	std::map<std::string_view, int> uri_;
 
-	static const size_t METHODS_SIZE = 5;
-	static const size_t URI_SIZE = 6;
-
-	std::array<std::string, METHODS_SIZE> data_methods_ =
+	static const size_t KNOWN_METHODS_SIZE = 4;
+	inline static const std::array<std::string, KNOWN_METHODS_SIZE> known_methods_ =
 	{
-		"DELETE", "GET", "POST", "PUT", "UNKNOWN"
+		"GET", "POST", "PUT", "DELETE"
 	};
+	inline static const std::string unknown_method = "UNKNOWN";
 
-	std::array<std::string, URI_SIZE> data_uri_ =
+	static const size_t KNOWN_URI_SIZE = 5;
+	inline static const std::array<std::string, KNOWN_URI_SIZE> known_uri_ =
 	{
-		"/", "/basket", "/help", "/order", "/product", "unknown"
+		"/", "/order", "/product", "/basket", "/help", 
 	};
+	inline static const std::string unknown_uri = "unknown";
+
+	template <typename Container, typename Init_Container>
+	void Initialization(const Container& c, Init_Container& init)
+	{
+		for (const auto& x : c)
+		{
+			init[x] = 0;
+		}
+	}
 };
 
 HttpRequest ParseRequest(std::string_view line);
