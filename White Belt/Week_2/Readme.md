@@ -1,4 +1,4 @@
-# Знакомство с искусством C++
+# Техника владения функциями и контейнерами
 
 ## [Задание по программированию: Факториал](https://github.com/m3nf1s/Modern-Cplusplus/tree/master/White%20Belt/Week_2/Task_1)
 
