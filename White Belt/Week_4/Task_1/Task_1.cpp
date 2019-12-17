@@ -84,4 +84,4 @@ int main()
 		Course("White belt"),
 		Week("4th")
 	);
-}
+} 
