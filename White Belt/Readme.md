@@ -47,4 +47,4 @@
 ### [5. Первое кумитэ](https://github.com/m3nf1s/Modern-Cplusplus/tree/master/White%20Belt/Week_5%20(Final_project))
 
 Задачи обучения:
-* Базы данных
+* Базы данных 
