@@ -1,4 +1,4 @@
-# C++: жёлтый пояс
+# C++: жёлтый пояс 
 
 [Основы разработки на C++: жёлтый пояс](https://www.coursera.org/learn/c-plus-plus-yellow/) by Moscow Institute of Physics and Technology & Yandex
 
