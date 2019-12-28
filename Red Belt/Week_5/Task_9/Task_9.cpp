@@ -33,8 +33,8 @@
 #include <sstream>
 #include <string_view>
 #include <future>
-#include <functional>
-#include <mutex>
+#include <cmath>
+
 template <typename Iterator>
 class IteratorRange
 {
@@ -176,8 +176,8 @@ Stats ExploreKeyWords(const std::set<std::string>& key_words, std::istream& inpu
         lines.push_back(line);
     }
 
-    size_t threads_count = 4;
-    size_t page_size = std::min(lines.size(), lines.size() / (threads_count - 1));
+    double threads_count = 4.0;
+    size_t page_size = std::min<size_t>(lines.size(), std::ceil(lines.size() / threads_count));
 
     std::vector<std::future<Stats>> futures;
 
