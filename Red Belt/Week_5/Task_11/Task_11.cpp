@@ -1,4 +1,39 @@
-﻿#include "test_runner.h"
+﻿/*
+    В заготовке решения задачи «Шаблон Synchronized» мы уже слегка коснулись идеи о том,
+    что уменьшение размера критической секции позволяет повысить скорость работы многопоточной программы. 
+    В этой задаче мы разовьём её больше.
+    
+    Давайте представим, что у нас есть map, к которому обращаются несколько потоков.
+    Чтобы синхронизировать доступ к нему, мы можем каждое обращение к этому map'у
+    защитить мьютексом (например, завернув наш map в шаблон Synchronized).
+    Теперь давайте представим, что у нас есть Synchronized<map<int, int>>, в котором хранятся все ключи от 1 до 10000.
+    Интуитивно кажется, что когда из одного потока мы обращаемся к ключу 10, а из другого — например, к ключу 6712,
+    то нет смысла защищать эти обращения одним и тем же мьютексом.
+    Это отдельные области памяти, а внутреннюю структуру словаря мы никак не изменяем.
+    При этом, если мы будем обращаться к ключу 6712 одновременно из нескольких потоков,
+    то синхронизация, несомненно, понадобится.
+    
+    Отсюда возникает идея — разбить наш словарь на нескольких подсловарей
+    с непересекающимся набором ключей и защитить каждый из них отдельным мьютексом.
+    Тогда при обращении разных потоков к разным ключам они нечасто будут попадать в один и тот же подсловарь,
+    а значит, смогут параллельно его обрабатывать.
+    Эту идею вам предстоит реализовать в этой задаче.
+
+    *   static_assert в начале класса говорит, что в данной задаче предполагается,
+            что ключами ConcurrentMap'а могут быть только целые числа.
+    *   Конструктор класса ConcurrentMap<K, V> принимает количество подсловарей,
+            на которые надо разбить всё пространство ключей.
+    *   operator[] должен вести себя так же, как аналогичный оператор у map — если ключ key присутствует в словаре,
+            он должен возвращать объект класса Access, содержащий ссылку на соответствующее ему значение;
+            если же key отсутствует в словаре, в него надо добавить пару (key, V()) и вернуть объект класса Access,
+            содержащий ссылку на только что добавленное значение.
+    *   Структура Access, должна вести себя так же, как и в шаблоне Synchronized, — предоставлять ссылку
+            на значение словаря и обеспечивать синхронизацию доступа к нему.
+    *   Метод BuildOrdinaryMap должен сливать вместе части словаря и возвращать весь словарь целиком.
+            При этом он должен быть потокобезопасным, то есть корректно работать,
+            когда другие потоки выполняют операции с ConcurrentMap.
+*/
+#include "test_runner.h"
 #include "profile.h"
 
 #include <algorithm>
@@ -8,53 +43,62 @@
 #include <random>
 #include <future>
 #include <mutex>
-#include <set>
+#include <map>
+
+template <typename T>
+T Abs(T x)
+{
+    return x < 0 ? (-1) * x : x;
+}
+
+auto Lock(std::mutex& m)
+{
+    return std::lock_guard<std::mutex>{m};
+}
 
 template <typename K, typename V>
 class ConcurrentMap
 {
-public:
-    static_assert(std::is_integral_v<K>, "ConcurrentMap supports only integer keys");
+private:
+    std::vector<std::pair<std::mutex, std::map<K, V>>> segments;
 
-    struct Access 
-    {    
+public:
+    static_assert(std::is_convertible_v<K, uint64_t>, "ConcurrentMap supports only integer keys");
+
+    struct Access
+    {
         std::lock_guard<std::mutex> guard;
         V& ref_to_value;
+
+        Access(const K& key, std::pair<std::mutex, std::map<K,V>>& segment)
+            : guard(segment.first)
+            , ref_to_value(segment.second[key])
+        {}
     };
 
     explicit ConcurrentMap(size_t bucket_count)
-        : data(bucket_count)
+        : segments(bucket_count)
     {
     }
 
     Access operator[](const K& key)
     {
-        size_t index = key % data.size();
-        MapSegment& segment = data[index];
-        return { std::lock_guard<std::mutex>(segment.m), segment.segment_[key] };
+        std::pair<std::mutex, std::map<K, V>>& segment = segments[Abs(key) % segments.size()];
+        return { key, segment };
     }
 
     std::map<K, V> BuildOrdinaryMap()
     {
         std::map<K, V> result;
-        
-        for (auto& segments : data)
+
+        for (auto& [mutex, segment] : segments)
         {
-            std::lock_guard<std::mutex>(segments.m);
-            result.insert(segments.segment_.begin(), segments.segment_.end());
+            auto g = Lock(mutex);
+            result.insert(segment.begin(), segment.end());
         }
 
         return result;
     }
-
-private:
-    struct MapSegment
-    {
-        std::map<K, V> segment_;
-        std::mutex m;
-    };
-
-    std::vector<MapSegment> data;
 };
 
 void RunConcurrentUpdates(ConcurrentMap<int, int>& cm, size_t thread_count, int key_count)
@@ -101,7 +145,8 @@ void TestReadAndWrite()
 {
     ConcurrentMap<size_t, std::string> cm(5);
 
-    auto updater = [&cm] {
+    auto updater = [&cm]
+    {
         for (size_t i = 0; i < 50000; ++i)
         {
             cm[i].ref_to_value += 'a';
