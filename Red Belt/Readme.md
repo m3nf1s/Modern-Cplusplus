@@ -33,4 +33,4 @@
 
 ### [5. Move-семантика и базовая многопоточность](https://github.com/m3nf1s/Modern-Cplusplus/tree/master/Red%20Belt/Week_5)
 
-### [6. Финальная задача]()
+### [6. Финальная задача]( )
