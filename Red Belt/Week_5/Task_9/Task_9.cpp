@@ -27,6 +27,7 @@
 #include "test_runner.h"
 #include "profile.h"
 
+#include <vector>
 #include <map>
 #include <string>
 #include <set>
