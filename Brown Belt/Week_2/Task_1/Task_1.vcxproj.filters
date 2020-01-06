@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Task_1.cpp">
+    <ClCompile Include="xml.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="XML.cpp">
+    <ClCompile Include="Task_1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="XML.h">
+    <ClInclude Include="test_runner.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="test_runner.h">
+    <ClInclude Include="xml.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
