@@ -11,7 +11,6 @@ int main()
 {
 	vector<int> vec;
 	int number;
-	string a;
 
 	cin >> number;
 
