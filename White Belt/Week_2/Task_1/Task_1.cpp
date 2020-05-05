@@ -14,7 +14,9 @@ int Factorial (int number)
 	if (number > 1)
 	{
 		for (int i = 2; i <= number; i++)
+		{
 			fac *= i;
+		}
 	}
 	return fac;
 }
