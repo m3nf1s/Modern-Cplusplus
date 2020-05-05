@@ -15,8 +15,6 @@ int Factorial (int number)
 	{
 		for (int i = 2; i <= number; i++)
 			fac *= i;
-
-		return fac;
 	}
 	return fac;
 }
