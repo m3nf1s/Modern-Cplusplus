@@ -13,14 +13,7 @@ void Database::AddEvent(const Date& date, const std::string& event)
 
 bool Database::DeleteEvent(const Date& date, const std::string& event)
 {
-    if (db_[date].count(event))
-    {
-        db_[date].erase(event);
-
-        return true;
-    }
-
-    return false;
+    return db_[date].erase(event);
 }
 
 int Database::DeleteDate(const Date& date)
